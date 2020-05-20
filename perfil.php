@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Isabella Gonçalves | Samplaces</title>
+    <title>Isabella Souza | Samplaces</title>
 </head>
 <body>
 
@@ -26,7 +26,7 @@
 
     <main>
         <div class="conteudo">
-            
+
             <h3>lugar favorito ever</h3>
             <article class="favorito">
                 
@@ -104,7 +104,8 @@
 
         <div class="usuario">
             <img src="img/users/user.jpg" alt="Isabella Gonçalves">
-            <h5>Isabella Gonçalves</h5>
+            <h5>Isabella Souza</h5>
+            <h6>@bellasouza</h6>
             <p>Mooca, São Paulo</p>
 
             <nav class="fav-user">
@@ -135,7 +136,7 @@
                 <a href="#"><li>amigos</li></a>
             </ul>
         </nav>
-        <a href="#">
+        <a href="https://github.com/RenataRochaAlves/samplaces" target="_blank">
             <img src="img/github.png" alt="GitHub">
         </a>     
     </footer>

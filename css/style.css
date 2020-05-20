@@ -25,6 +25,9 @@ html {
 
 body {
     font-family: tommymedium;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* aqui começa o header */
@@ -132,7 +135,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .imagem-grande, .info {
@@ -169,7 +172,6 @@ main {
 }
 
 .icones div {
-    width: calc(100% / 5 - 20px);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -178,7 +180,37 @@ main {
 
 .icones img {
     width: 30px;
+    margin-bottom: 8px;
 }
+
+.icones a {
+    text-decoration: none;
+}
+
+.icones h6 {
+    font-size: 0.8rem;
+}
+
+#fav h6{
+    color: #1da8d4;
+}
+
+#amigos h6 {
+    color: #a6cda0;
+}
+
+#date h6 {
+    color: #e8a510;
+}
+
+#domingo h6 {
+    color: #eb4100;
+}
+
+#salvo h6 {
+    color: #6e6e6e;
+}
+
 
 .botao-grande {
     font-family: tommymedium;
@@ -209,10 +241,23 @@ main {
     margin-bottom: 15px;
 }
 
+.fav-amigos h5 {
+    color: #a6cda0;
+}
+
+.fav-date h5 {
+    color: #e8a510;
+}
+
+.fav-domingo h5 {
+    color: #eb4100;
+}
+
 .fav-outros div h6 {
     font-size: 1.1rem;
     font-family: tommyregular;
     color: #6e6e6e;
+    margin-bottom: 10px;
 }
 
 .fav-outros div a {
@@ -221,7 +266,144 @@ main {
 
 .fav-outros div img {
     width: 100%;
-    border-radius: 20px;
+    border-radius: 15px;
     margin-bottom: 10px;
 }
 
+.fav-outros button {
+    font-family: tommymedium;
+    font-size: 0.9rem;
+    color: #a6cda0;
+    background-color: none;
+    border: none;
+}
+
+/* aqui começa o painel do usuario */
+
+.usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f3f3f4;
+    padding: 35px;
+    border-radius: 20px;
+    width: 40%;
+    height: 680px;
+
+}
+
+.usuario img {
+    width: 100px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.usuario h5 {
+    font-size: 1.2rem;
+    font-family: tommyregular;
+    text-align: center;
+    color: #6e6e6e;
+    /* white-space: nowrap; */
+    margin-bottom: 4px;
+}
+
+.usuario h6 {
+    font-size: 0.9rem;
+    font-family: tommyregular;
+    color: #a0a0a0;
+    margin-bottom: 8px;
+}
+
+.usuario p {
+    font-family: tommyregular;
+    text-align: center;
+    color: #a0a0a0;
+    font-size: 1rem;
+    margin-bottom: 50px;
+}
+
+.usuario nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.usuario nav ul li {
+    list-style-type: none;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.usuario a {
+    text-decoration: none;
+}
+
+.fav-user ul a:nth-child(1) {
+    color: #1da8d4;
+}
+
+.fav-user ul a:nth-child(2) {
+    color: #a6cda0;
+}
+
+.fav-user ul a:nth-child(3) {
+    white-space: nowrap;
+    color: #e8a510;
+}
+
+.fav-user ul a:nth-child(4) {
+    color: #eb4100;
+    margin-bottom: 100px;
+}
+
+.menu-user ul li {
+    color: #a0a0a0;
+    font-family: tommyregular;
+}
+
+.menu-user ul a:nth-child(1) {
+    font-family: tommybold;
+}
+
+
+/* aqui começa o footer */
+
+footer {
+    background-color: #1da8d4;
+    width: 70%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: 200px;
+}
+
+footer img {
+    height: 30px;
+}
+
+footer nav {
+    width: 30%;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+footer nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer nav ul a {
+    text-decoration: none;
+}
+
+footer nav ul li {
+    list-style-type: none;
+    color: white;
+}
