@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Isabella Gonçalves | Samplaces</title>
 </head>
 <body>
 
     <header>
-        <img src="img/logo-site.png" alt="samplaces">
+        <img id="logo" src="img/logo-site.png" alt="samplaces">
         <nav>
             <ul>
                 <a href="#"><li>top</li></a>
                 <a href="#"><li>recentes</li></a>
                 <a href="#"><li>amigos</li></a>
-                <a href="#"><li>logout</li></a>
+                <a href="#"><li id="logout">logout</li></a>
             </ul>
-            <input type="text" name="busca" id="busca" value="">
-            <img src="img/busca.png" alt="buscar"> 
+            <div class="busca">
+                <input type="text" name="busca" id="busca" value="">
+                <button type="submit"><img src="img/busca.png" alt="buscar"></button>
+            </div>
         </nav>
     </header>
 
     <main>
         <div class="conteudo">
-
+            
+            <h3>lugar favorito ever</h3>
             <article class="favorito">
-                <h3>lugar favorito ever</h3>
+                
                 <div class="imagem-grande">
                     <img src="img/places/martinelli.jpg" alt="Martinelli">
                 </div>
