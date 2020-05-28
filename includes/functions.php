@@ -27,7 +27,7 @@ function adicionaUser($nome, $user, $bairro, $email, $senha, $foto){
         $bairro = $result["id"];
     }
 
-
+    // adiciona o usuário ao banco de dados 
     $query = $db->prepare("INSERT INTO users(id, user, nome, email, senha, foto, bairros_id) 
     VALUES(DEFAULT, :user, :nome, :email, :senha, :foto, :bairro)");
 
@@ -35,7 +35,19 @@ function adicionaUser($nome, $user, $bairro, $email, $senha, $foto){
     "foto"=>$foto, "bairro"=>$bairro]);
 }
 
+// função que verifica se o user está disponível
+function verificaUser($user) {
+    global $db;
 
-adicionaUser("Beltraninho", "bebel", "São Miguel Paulista", "beltrano@usp.br", "123456", "foto");
+    // procura no banco de dados o user que a pessoa quer inserir
+    $query = $db->prepare("SELECT * FROM users WHERE user LIKE :user");
+    $query->execute(["user"=>$user]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    // compara se o resultado encontrado é igual o que a pessoa quer inserir
+    return is_null($result);
+}
+
+
 
 ?>

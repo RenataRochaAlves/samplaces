@@ -8,7 +8,6 @@ $senha = "root";
 try{
     $db = new PDO($host, $user, $senha);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO:: ERRMODE_EXCEPTION);
-    echo "Sucesso";
 } catch(PDOExeption $e){
     echo "Erro";
     echo $e->getMessage();
