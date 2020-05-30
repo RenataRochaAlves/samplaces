@@ -61,4 +61,32 @@ function verificaEmail($email) {
     return is_array($result);
 }
 
+// function para carregar as informações de um usuário
+function carregaUser($user){
+    global $db;
+
+    // procura os dados no bd com base no user recebido
+    $query = $db->prepare("SELECT 
+                                u.id,
+                                u.user,
+                                u.nome,
+                                u.email,
+                                u.senha,
+                                u.foto,
+                                b.nome as bairro
+                            FROM 
+                                users as u
+                            INNER JOIN
+                                bairros as b
+                            ON u.bairros_id = b.id
+                            WHERE u.user LIKE :user");
+
+    $query->execute(["user"=>$user]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    // retorna o array com as informações do usuário
+    return $result;
+}
+
+
 ?>

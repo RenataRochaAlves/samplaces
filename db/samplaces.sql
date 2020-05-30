@@ -207,4 +207,4 @@ select * from bairros;
 
 ALTER TABLE users MODIFY senha varchar(200) not null;
 
-ALTER TABLE users MODIFY foto varchar(200);
+ALTER TABLE users MODIFY foto varchar(500);

@@ -1,10 +1,27 @@
+<?php 
+
+include("includes/functions.php");
+
+if($_GET){
+    // guarda o user solicitado
+    $user = $_GET['user'];
+
+    // carrega as informações do usuário em um array
+    $perfil = carregaUser($user);
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Isabella Souza | Samplaces</title>
+    <title><?= $perfil['nome'] ?> | Samplaces</title>
 </head>
 <body>
 
@@ -103,10 +120,14 @@
         </div>
 
         <div class="usuario">
-            <img src="img/users/user.jpg" alt="Isabella Gonçalves">
-            <h5>Isabella Souza</h5>
-            <h6>@bellasouza</h6>
-            <p>Mooca, São Paulo</p>
+            <img src= "<?= $perfil['foto'] ?>" alt= <?= $perfil['nome'] ?>>
+            <h5><?= $perfil['nome'] ?></h5>
+            <h6>@<?= $perfil['user'] ?></h6>
+            <p><?php if($perfil['bairro'] == "não mora em São Paulo" || $perfil['bairro'] == ""){
+                        echo $perfil['bairro'];
+                    } else{
+                        echo $perfil['bairro'] . ", São Paulo";
+                    }?></p>
 
             <nav class="fav-user">
                 <ul>

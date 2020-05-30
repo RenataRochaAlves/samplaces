@@ -79,6 +79,8 @@ if($_POST){
     // verifica se os dados inseridos estão certos e insere no banco de dados
     if($nomeOk && $userOk && $bairroOk && $emailOk && $senhaOk && $confirmacaoOk && $fotoOk){
         adicionaUser($nome, $user, $bairro, $email, $senha, $foto);
+
+        header('location: perfil.php?user='.$user);
     }
 
 
