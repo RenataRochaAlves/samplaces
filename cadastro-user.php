@@ -29,7 +29,6 @@ if($_POST){
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $confirmacao = $_POST['confirmacao'];
-    $foto = $_POST['foto'];
 
     // verificação de dados
     if(strlen($nome) < 8){
@@ -38,11 +37,14 @@ if($_POST){
     if(strlen($user) < 4){
         $userOk = false;
     }
-    if(verificaUser($user) == false){
+    if(verificaUser($user)){
         $userOk = false;
     }
-    if(isset($_POST['naosp'])){
-        $bairro = "Não mora em São Paulo";
+    if($_POST['naosp'] != null){
+        $bairro = $_POST['naosp'];
+    }
+    if(verificaEmail($email)){
+        $emailOk = false;
     }
     if(strpos($email, '@') == false){
         $emailOk = false;
@@ -54,29 +56,31 @@ if($_POST){
         $confirmacaoOk = false;
     }
     // verifica se enviaram uma imagem
-    if($_FILES){
-         // Separando informações uteis do $_FILES
-         $tmpName = $_FILES['foto']['tmp_name'];
-         $fileName = $user . '-' . $_FILES['foto']['name'];
-         $error = $_FILES['foto']['error'];
- 
-         // Salvar o arquivo numa pasta do meu sistema
-         if($error == 0){
-             move_uploaded_file($tmpName,'img/users/'.$fileName);
- 
-         // Salvar o nome do arquivo em $imagem
-         $foto ='img/users/'.$fileName;
-         } else {
-             $fotoOk = false;
-         }
+    if($_FILES) {
+        // Separando informações uteis do $_FILES
+        $tmpName = $_FILES['foto']['tmp_name'];
+        $fileName = $user . '-' . $_FILES['foto']['name'];
+        $error = $_FILES['foto']['error'];
+
+        // Salvar o arquivo numa pasta do meu sistema
+        if($error == 0){
+            move_uploaded_file($tmpName,'img/users/'.$fileName);
+
+        // Salvar o nome do arquivo em $foto
+        $foto ='img/users/'.$fileName;
+
+        } else {
+            $fotoOk = false; 
+        }
     }
+}
 
 
     // verifica se os dados inseridos estão certos e insere no banco de dados
     if($nomeOk && $userOk && $bairroOk && $emailOk && $senhaOk && $confirmacaoOk && $fotoOk){
         adicionaUser($nome, $user, $bairro, $email, $senha, $foto);
     }
-}
+
 
 
 ?>
@@ -106,7 +110,7 @@ if($_POST){
     <main>
         <h3>cadastro</h3>
 
-        <form method="POST" class="cad-user">
+        <form method="POST" class="cad-user" enctype="multipart/form-data">
 
             <div id="nome">
             <label for="nome">nome completo</label><br>
@@ -123,7 +127,7 @@ if($_POST){
             <div id="bairro">
             <label for="bairro">bairro</label><br>
                 <input type="text" name="bairro" id="bairro" value="<?= $bairro ?>" placeholder="República"><br>
-                <input class="checkmark" type="checkbox" name="naosp" id="naosp" value="naosp">
+                <input class="checkmark" type="checkbox" name="naosp" id="naosp" value="não mora em São Paulo">
                 <label for="naosp">não moro em São Paulo</label>
             </div>
 

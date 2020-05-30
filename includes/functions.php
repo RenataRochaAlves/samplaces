@@ -35,7 +35,7 @@ function adicionaUser($nome, $user, $bairro, $email, $senha, $foto){
     "foto"=>$foto, "bairro"=>$bairro]);
 }
 
-// função que verifica se o user está disponível
+// função que verifica se o user já existe
 function verificaUser($user) {
     global $db;
 
@@ -45,9 +45,20 @@ function verificaUser($user) {
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
     // compara se o resultado encontrado é igual o que a pessoa quer inserir
-    return is_null($result);
+    return is_array($result);
 }
 
+// função que verifica se o e-mail já foi cadastrado
+function verificaEmail($email) {
+    global $db;
 
+    // procura no banco de dados o user que a pessoa quer inserir
+    $query = $db->prepare("SELECT * FROM users WHERE email LIKE :email");
+    $query->execute(["email"=>$email]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    // compara se o resultado encontrado é igual o que a pessoa quer inserir
+    return is_array($result);
+}
 
 ?>
