@@ -71,7 +71,7 @@ if($_POST){
                     <?= ($senhaOk? '': '<span class="erro">senha incorreta ):') ?><br>
             </div>
 
-            <a href="cadastro-user.php" class="nova-conta"><p>não possuo uma conta</p></a>
+            <a href="cadastro-user.php" class="nova-conta"><p>não possui uma conta? cadastre-se</p></a>
 
             <div class="botao">
             <button class="botao-grande" type="submit">Enviar</button>

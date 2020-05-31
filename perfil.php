@@ -2,7 +2,7 @@
 
 include("includes/functions.php");
 
-if($_GET){
+if($_GET['user']){
     // guarda o user solicitado
     $user = $_GET['user'];
 
@@ -141,7 +141,7 @@ if($_GET){
             <nav class="menu-user">
                 <ul>
                     <a href="#"><li>salvos</li></a>
-                    <a href="#"><li>configurações</li></a>
+                    <a href="editar-user.php?user=<?= $perfil['user'] ?>"><li>configurações</li></a>
                     <a href="#"><li>sair</li></a>
                 </ul>
             </nav>

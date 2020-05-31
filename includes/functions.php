@@ -88,5 +88,37 @@ function carregaUser($user){
     return $result;
 }
 
+// função que altera os dados do usuário
+function editaUser($id, $nome, $user, $bairro, $email, $senha, $foto) {
+
+    global $db;
+
+    // procura no bd se o bairro informado já foi cadastrado
+    $query = $db->prepare("SELECT * FROM bairros WHERE nome LIKE :bairro");
+    $query->execute(["bairro"=>$bairro]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    // se já tiver cadastrado, guarda o id para ser usado no cadastro do usuário
+    if($result){
+        $bairro = $result["id"];
+    // se não tiver, cria um novo bairro e guarda o id para ser usado
+    } else {
+        $query = $db->prepare("INSERT INTO bairros(id, nome) VALUES(DEFAULT, :nome)");
+        $query->execute(["nome"=>$bairro]);
+
+        $query = $db->prepare("SELECT * FROM bairros WHERE nome LIKE :bairro");
+        $query->execute(["bairro"=>$bairro]);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        $bairro = $result["id"];
+    }
+
+    // atualiza as informações no cadastro do usuário
+    $query = $db->prepare("UPDATE users SET user = :user, nome = :nome, email = :email, 
+    senha = :senha, foto = :foto, bairros_id = :bairro WHERE id = :id");
+    $query->execute(['user'=>$user, 'nome'=>$nome, 'email'=>$email, 'senha'=>$senha,
+    'foto'=>$foto, 'bairro'=>$bairro, 'id'=>$id]);
+
+}
 
 ?>

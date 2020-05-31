@@ -66,7 +66,7 @@ input[type=checkbox]{
     border-radius: 100px;
 }
 
-.cad-user #senha, #confirmacao {
+.cad-user #senha, #confirmacao, #senhaAnt {
     width: 100%;
 }
 
@@ -103,4 +103,40 @@ input[type=checkbox]{
 
 .login div {
     width: 100%;
+}
+
+.busca input {
+    width: calc(100% - 40px);
+    padding: 8px;
+    padding-left: 15px;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.foto-edit img {
+    width: 170px;
+    height: 170px;
+    border-radius: 100px;
+}
+
+.botao-edit {
+    white-space: nowrap;
+    font-family: tommymedium;
+    color: white;
+    background-color: #a6cda0;
+    border: none;
+    border-radius: 20px;
+    padding: 6px;
+    font-size: 14px;
+    width: calc(100% / 2 - 100px);
+    margin-top: 50px;
+}
+
+.botao-edit a {
+    text-decoration: none;
+    color: white;
+}
+
+#excluir {
+    background-color: #eb4100;
 }
