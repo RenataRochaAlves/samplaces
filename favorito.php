@@ -11,11 +11,14 @@ if($_GET['user']){
     // carrega as informações do usuário em um array
     $perfil = carregaUser($user);
 }
+if($_GET['fav']){
+    $curto = $_GET['fav'];
+
+    $favorito = carregaTipoFavorito($curto);
+}
 
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,7 @@ if($_GET['user']){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title><?= $perfil['nome'] ?> | Samplaces</title>
+    <title><?= $favorito['nome'] ?> | Samplaces</title>
 </head>
 <body>
 
@@ -46,14 +49,14 @@ if($_GET['user']){
     <main>
         <div class="conteudo">
 
-            <h3>lugar favorito ever</h3>
+            <h3 style="color: <?= $favorito['cor'] ?>"><?= $favorito['nome'] ?></h3>
             <article class="favorito">
                 
                 <div class="imagem-grande">
                     <img src="img/places/martinelli.jpg" alt="Martinelli">
                 </div>
                 <div class="info">
-                    <h4>Lorem ipsum dolor</h4>
+                    <h4 style="color: <?= $favorito['cor'] ?>">Lorem ipsum dolor</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat nulla in, qui 
                     atque aut minus sint incidunt architecto molestiae rerum suscipit minima, fugiat hic 
                     inventore, sunt voluptatibus voluptates praesentium error?</p>
@@ -92,33 +95,6 @@ if($_GET['user']){
                     <a href="#"><button class="botao-grande">passear</button></a>
                 </div>
             </article>
-
-            <div class="fav-outros">
-                <div class="fav-amigos">
-                    <h5>encontrar os amigos</h5>
-                    <a href="#">
-                        <img src="img/places/pe-na-porta.jpg" alt="pé na porta">
-                        <h6>Lorem ipsum dolor</h6>
-                        <button>ver mais   >>></button>
-                    </a>
-                </div>
-                <div class="fav-date">
-                    <h5>favorito para um date</h5>
-                    <a href="#">
-                        <img src="img/places/praca-por-do-sol.jpg" alt="praça pôr-do-sol">
-                        <h6>Lorem ipsum dolor</h6>
-                        <button>ver mais   >>></button>
-                    </a>
-                </div>
-                <div class="fav-domingo">
-                    <h5>favorito de domingo</h5>
-                    <a href="#">
-                        <img src="img/places/paulista.jpg" alt="avenida paulista">
-                        <h6>Lorem ipsum dolor</h6>
-                        <button>ver mais   >>></button>
-                    </a>
-                </div>
-            </div>
         </div>
 
         <div class="usuario">
@@ -140,15 +116,13 @@ if($_GET['user']){
                 </ul>
             </nav>
 
-            <?php if($_SESSION && $_SESSION['user'] == $perfil['user']){ ?>
-                <nav class="menu-user">
-                    <ul>
-                        <a href="#"><li>salvos</li></a>
-                        <a href="editar-user.php?user=<?= $perfil['user'] ?>"><li>configurações</li></a>
-                        <a href="#"><li>sair</li></a>
-                    </ul>
-                </nav>
-            <?php } ?>
+            <nav class="menu-user">
+                <ul>
+                    <a href="#"><li>salvos</li></a>
+                    <a href="editar-user.php?user=<?= $perfil['user'] ?>"><li>configurações</li></a>
+                    <a href="#"><li>sair</li></a>
+                </ul>
+            </nav>
         </div>
     </main>
 

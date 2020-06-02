@@ -21,6 +21,14 @@ if($_POST){
     // verificação de dados
     if(is_array($perfil)){
         if(password_verify($senha, $perfil['senha'])){
+
+            session_start();
+
+            $_SESSION['nome'] = $perfil['nome'];
+            $_SESSION['user'] = $perfil['user'];
+            $_SESSION['foto'] = $perfil['foto'];
+            $_SESSION['email'] = $perfil['email'];
+
             header('location: perfil.php?user='.$user);
         } else{
             $senhaOk = false;

@@ -121,4 +121,48 @@ function editaUser($id, $nome, $user, $bairro, $email, $senha, $foto) {
 
 }
 
+// function para carregar as informações de um tipo de favorito
+function carregaTipoFavorito($curto){
+    global $db;
+
+    // procura os dados no bd com base no nome curto recebido
+    $query = $db->prepare("SELECT * FROM tipo_favorito WHERE curto LIKE :curto");
+
+    $query->execute(["curto"=>$curto]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    // retorna o array com as informações do favorito
+    return $result;
+}
+
+// função para adicionar um novo favorito
+function adicionaFavorito($lugar, $texto, $foto, $user, $tipo){
+    global $db;
+
+    // procura no bd se o lugar informado já foi cadastrado
+    $query = $db->prepare("SELECT * FROM lugar WHERE nome LIKE :lugar");
+    $query->execute(["lugar"=>$lugar]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    // se já tiver cadastrado, guarda o id para ser usado no cadastro do usuário
+    if($result){
+        $lugar = $result["id"];
+    // se não tiver, cria um novo lugar e guarda o id para ser usado
+    } else {
+        $query = $db->prepare("INSERT INTO lugar(id, nome) VALUES(DEFAULT, :nome)");
+        $query->execute(["nome"=>$lugar]);
+
+        $query = $db->prepare("SELECT * FROM lugar WHERE nome LIKE :lugar");
+        $query->execute(["lugar"=>$lugar]);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        $lugar = $result["id"];  
+    }
+
+    // insere os dados no bd
+            $query = $db->prepare("INSERT INTO favorito(id, descricao, foto, users_id, lugar_id, tipo_favorito_id) 
+            VALUES (DEFAULT, :texto, :foto, :user, :lugar, :tipo)");
+            $query->execute(['texto'=>$texto, 'foto'=>$foto, 'user'=>$user, 'lugar'=>$lugar, 'tipo'=>$tipo]);
+}
+
 ?>

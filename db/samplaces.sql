@@ -205,6 +205,52 @@ ALTER TABLE users ALTER COLUMN senha VARCHAR(200) NOT NULL;
 
 select * from bairros;
 
+DELETE FROM bairros WHERE id = 6;
+
 ALTER TABLE users MODIFY senha varchar(200) not null;
 
 ALTER TABLE users MODIFY foto varchar(500);
+
+SELECT 
+	u.id,
+    u.user,
+    u.nome,
+    u.email,
+    u.senha,
+    u.foto,
+    b.nome as bairro
+FROM 
+	users as u
+INNER JOIN
+	bairros as b
+ON u.bairros_id = b.id
+WHERE u.user LIKE "vicvicviccc";
+
+INSERT INTO tipo_favorito(id, nome, curto, cor) 
+VALUES(DEFAULT, "favorito de domingo", "domingo","#eb4100");
+
+
+CREATE TABLE IF NOT EXISTS `samplaces`.`tipo_favorito` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `curto` VARCHAR(45) NOT NULL,
+  `cor` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
+ENGINE = InnoDB;
+
+DROP TABLE favdomingo;
+
+ALTER TABLE favorito ADD tipo_favorito_id INT;
+
+ALTER TABLE favorito ADD CONSTRAINT `fk_favorito_tipo_favorito1`
+    FOREIGN KEY (`tipo_favorito_id`)
+    REFERENCES `samplaces`.`tipo_favorito` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+
+
+
+
+
