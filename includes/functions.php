@@ -165,4 +165,65 @@ function adicionaFavorito($lugar, $texto, $foto, $user, $tipo){
             $query->execute(['texto'=>$texto, 'foto'=>$foto, 'user'=>$user, 'lugar'=>$lugar, 'tipo'=>$tipo]);
 }
 
+// função que edita um favorito
+function editaFavorito($lugar, $texto, $foto, $user, $tipo){
+    global $db;
+
+    // carrega as informações do favorito já criado
+    $favorito = carregaFavUserTipo($user, $tipo);
+
+    // procura no bd se o lugar informado já foi cadastrado
+    $query = $db->prepare("SELECT * FROM lugar WHERE nome LIKE :lugar");
+    $query->execute(["lugar"=>$lugar]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    // se já tiver cadastrado, guarda o id para ser usado no cadastro do usuário
+    if($result){
+        $lugar = $result["id"];
+    // se não tiver, cria um novo lugar e guarda o id para ser usado
+    } else {
+        $query = $db->prepare("INSERT INTO lugar(id, nome) VALUES(DEFAULT, :nome)");
+        $query->execute(["nome"=>$lugar]);
+
+        $query = $db->prepare("SELECT * FROM lugar WHERE nome LIKE :lugar");
+        $query->execute(["lugar"=>$lugar]);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        $lugar = $result["id"];  
+    }
+
+    // insere os dados no bd
+            $query = $db->prepare("UPDATE favorito SET descricao = :texto, foto = :foto, lugar_id = :lugar WHERE id = :id");
+            $query->execute(['texto'=>$texto, 'foto'=>$foto, 'user'=>$user, 'lugar'=>$lugar, 'tipo'=>$tipo, 'id'=>$favorito['id']]);
+}
+
+// função que carrega um favorito de acordo com o user e o tipo
+function carregaFavUserTipo($user, $tipo){
+
+    global $db;
+
+    $query = $db->prepare("SELECT 
+                            f.id,
+                            f.descricao,
+                            f.foto,
+                            u.user,
+                            l.nome as lugar,
+                            t.nome as tipo
+                        FROM 
+                            favorito as f
+                        INNER JOIN
+                            users as u
+                        INNER JOIN
+                            lugar as l
+                        INNER JOIN
+                            tipo_favorito as t
+                        ON u.id = f.users_id AND l.id = f.lugar_id AND t.id = f.tipo_favorito_id
+                        WHERE u.user = :user AND t.id = :tipo");
+    $query->execute(['user'=>$user, 'tipo'=>$tipo]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+
 ?>

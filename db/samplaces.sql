@@ -249,7 +249,33 @@ ALTER TABLE favorito ADD CONSTRAINT `fk_favorito_tipo_favorito1`
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
+SELECT * from tipo_favorito;
 
+ALTER TABLE favorito MODIFY descricao varchar(256);
+
+use samplaces;
+
+ALTER TABLE users MODIFY user varchar(45) NOT NULL;
+
+SELECT * FROM lugar;
+
+SELECT 
+	f.id,
+    f.descricao,
+    f.foto,
+    u.user,
+    l.nome as lugar,
+    t.nome as tipo
+FROM 
+	favorito as f
+INNER JOIN
+	users as u
+INNER JOIN
+	lugar as l
+INNER JOIN
+	tipo_favorito as t
+ON u.id = f.users_id AND l.id = f.lugar_id AND t.id = f.tipo_favorito_id
+WHERE u.user = "renas" AND t.id = 3;
 
 
 

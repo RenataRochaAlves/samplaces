@@ -58,9 +58,10 @@ if($_POST){
 
         adicionaFavorito($lugar, $texto, $foto, $perfil['id'], $favorito['id']);
 
-        header('location: perfil.php?user='.$user);
+        header('location: favorito.php?user='.$user);
     }
 }
+
 
 ?>
 
@@ -133,10 +134,10 @@ if($_POST){
 
             <nav class="fav-user">
                 <ul>
-                    <a href="cadastro-fav.php?user=<?= $perfil['user'] ?>&fav=favorito"><li>lugar favorito ever</li></a>
-                    <a href="cadastro-fav.php?user=<?= $perfil['user'] ?>&fav=amigos"><li>favorito para encontrar os amigos</li></a>
-                    <a href="cadastro-fav.php?user=<?= $perfil['user'] ?>&fav=date"><li>favorito para um date</li></a>
-                    <a href="cadastro-fav.php?user=<?= $perfil['user'] ?>&fav=domingo"><li>favorito de domingo</li></a>
+                    <a href="favorito.php?user=<?= $perfil['user'] ?>&fav=favorito"><li>lugar favorito ever</li></a>
+                    <a href="favorito.php?user=<?= $perfil['user'] ?>&fav=amigos"><li>favorito para encontrar os amigos</li></a>
+                    <a href="favorito.php?user=<?= $perfil['user'] ?>&fav=date"><li>favorito para um date</li></a>
+                    <a href="favorito.php?user=<?= $perfil['user'] ?>&fav=domingo"><li>favorito de domingo</li></a>
                 </ul>
             </nav>
 

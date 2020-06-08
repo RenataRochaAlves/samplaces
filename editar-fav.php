@@ -2,8 +2,6 @@
 
 include("includes/functions.php");
 
-session_start();
-
 if($_GET['user']){
     // guarda o user solicitado
     $user = $_GET['user'];
@@ -19,6 +17,53 @@ if($_GET['fav']){
 
 $favcad = carregaFavUserTipo($perfil['user'], $favorito['id']);
 
+$lugar = $favcad['lugar'];
+$texto = $favcad['descricao'];
+$foto = $favcad['foto'];
+
+$lugarOk = true;
+$textoOk = true;
+$fotoOk = true;
+
+if($_POST){
+
+    $lugar = $_POST['lugar'];
+    $texto = $_POST['texto'];
+
+    if(strlen($lugar) < 5){
+        $lugarOk = false;
+    }
+    if(strlen($texto) > 256){
+        $textoOk = false;
+    }
+    if($_FILES) {
+        // Separando informações uteis do $_FILES
+        $tmpName = $_FILES['foto']['tmp_name'];
+        $fileName = $user . '-' . $favorito['curto'] . '-' . $_FILES['foto']['name'];
+        $error = $_FILES['foto']['error'];
+
+        // Salvar o arquivo numa pasta do meu sistema
+        if($error == 0){
+            move_uploaded_file($tmpName,'img/favoritos/'.$fileName);
+
+        // Salvar o nome do arquivo em $foto
+        $foto ='img/favoritos/'.$fileName;
+
+        } else {
+            $fotoOk = false; 
+        }
+    } else {
+        $fotoOk = false;
+    }
+
+    if($lugarOk && $textoOk && $fotoOk){
+
+        editaFavorito($lugar, $texto, $foto, $user, $favorito['id']);
+
+        header('location: perfil.php?user='.$user);
+    }
+}
+
 
 ?>
 
@@ -28,7 +73,7 @@ $favcad = carregaFavUserTipo($perfil['user'], $favorito['id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title><?= $favcad['lugar'] ?>, por <?= $perfil['user'] ?> | Samplaces</title>
+    <title>adicionar <?= $favorito['nome'] ?> | Samplaces</title>
 </head>
 <body>
 
@@ -53,50 +98,29 @@ $favcad = carregaFavUserTipo($perfil['user'], $favorito['id']);
 
             <h3 style="color: <?= $favorito['cor'] ?>"><?= $favorito['nome'] ?></h3>
             <article class="favorito">
+
+                <form class="form-fav" method="post" enctype="multipart/form-data">
                 
                 <div class="imagem-grande">
-                    <img src="<?= $favcad['foto'] ?>" alt="<?= $favcad['lugar'] ?>">
+                    <label class="select-foto">
+                            <input type="file" name="foto" id="foto" accept=".jpg,.jpeg,.png,.gif" required>
+
+                            <img src="<?= $foto ?>" id="foto-carregada">
+                        </label><br>
+                        <?= ($fotoOk? '' : '<span class="erro">a imagem é inválida ):')?>
                 </div>
                 <div class="info">
-                    <h4 style="color: <?= $favorito['cor'] ?>"><?= $favcad['lugar'] ?></h4>
-                    <p><?= $favcad['descricao'] ?></p>
-                    <div class="icones">
-                        <a href="#">
-                            <div id="fav">
-                                <img src="img/favorito.png" alt="favorito">
-                                <h6>368</h6>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div id="amigos">
-                                <img src="img/amigos.png" alt="amigos">
-                                <h6>368</h6>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div id="date">
-                                <img src="img/date.png" alt="date">
-                                <h6>368</h6>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div id="domingo">
-                                <img src="img/domingo.png" alt="domingo">
-                                <h6>368</h6>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div id="salvo">
-                                <img src="img/salvo.png" alt="salvo">
-                                <h6>368</h6>
-                            </div>
-                        </a>
-                    </div>
-                    <a href="#"><button class="botao-grande">passear</button></a>
-                    <?php if($_SESSION['user'] == $user) { ?>
-                    <a href="editar-fav.php?user=<?= $user ?>&fav=<?= $curto ?>"><button class="botao-grande" style="background-color: <?= $favorito['cor'] ?>">editar favorito</button></a>
-                    <?php } ?>
+                    <input type="text" name="lugar" id="lugar" value="<?= $lugar ?>" 
+                    placeholder="nome do lugar (ex: Edifício Martinelli)" style="color: <?= $favorito['cor'] ?>" required><br>
+                    <?= ($lugarOk? '' : '<span class="erro">o texto é muito curto ):')?><br>
+
+                    <textarea name="texto" id="texto" cols="30" rows="10" maxlenght="256" value="<?= $texto ?>"
+                    placeholder="conta pra gente alguma história ou o motivo de gostar desse lugar em 256 caracteres"><?= $texto ?></textarea><br>
+                    <?= ($textoOk? '' : '<span class="erro">oops! texto muito grande ):')?><br>
+                    
+                    <button type="submit" class="botao-grande">enviar</button>
                 </div>
+                </form>
             </article>
         </div>
 
@@ -142,5 +166,16 @@ $favcad = carregaFavUserTipo($perfil['user'], $favorito['id']);
             <img src="img/github.png" alt="GitHub">
         </a>     
     </footer>
+
+    <script>
+        document.getElementById("foto").onchange = (evt) => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("foto-carregada").src = e.target.result;
+            };
+            reader.readAsDataURL(evt.target.files[0]);
+        };
+    </script>
+
 </body>
 </html>
