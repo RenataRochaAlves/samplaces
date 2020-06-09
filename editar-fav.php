@@ -49,20 +49,25 @@ if($_POST){
         // Salvar o nome do arquivo em $foto
         $foto ='img/favoritos/'.$fileName;
 
-        } else {
-            $fotoOk = false; 
-        }
-    } else {
-        $fotoOk = false;
+        } 
+        // else {
+        //     $fotoOk = false; 
+        // }
     }
-
+    
     if($lugarOk && $textoOk && $fotoOk){
 
-        editaFavorito($lugar, $texto, $foto, $user, $favorito['id']);
+        editaFavorito($lugar, $texto, $foto, $user, $perfil['id'], $favorito['id']);
 
         header('location: perfil.php?user='.$user);
     }
 }
+    
+    
+
+
+    
+
 
 
 ?>
@@ -102,12 +107,13 @@ if($_POST){
                 <form class="form-fav" method="post" enctype="multipart/form-data">
                 
                 <div class="imagem-grande">
+                    <?= ($fotoOk? '' : '<span class="erro">a imagem é inválida ):')?>
                     <label class="select-foto">
-                            <input type="file" name="foto" id="foto" accept=".jpg,.jpeg,.png,.gif" required>
+                            <input type="file" name="foto" id="foto" accept=".jpg,.jpeg,.png,.gif" value="<?= $foto ?>">
 
                             <img src="<?= $foto ?>" id="foto-carregada">
                         </label><br>
-                        <?= ($fotoOk? '' : '<span class="erro">a imagem é inválida ):')?>
+                        
                 </div>
                 <div class="info">
                     <input type="text" name="lugar" id="lugar" value="<?= $lugar ?>" 

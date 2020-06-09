@@ -166,7 +166,7 @@ function adicionaFavorito($lugar, $texto, $foto, $user, $tipo){
 }
 
 // função que edita um favorito
-function editaFavorito($lugar, $texto, $foto, $user, $tipo){
+function editaFavorito($lugar, $texto, $foto, $user, $userid, $tipo){
     global $db;
 
     // carrega as informações do favorito já criado
@@ -193,8 +193,10 @@ function editaFavorito($lugar, $texto, $foto, $user, $tipo){
     }
 
     // insere os dados no bd
-            $query = $db->prepare("UPDATE favorito SET descricao = :texto, foto = :foto, lugar_id = :lugar WHERE id = :id");
-            $query->execute(['texto'=>$texto, 'foto'=>$foto, 'user'=>$user, 'lugar'=>$lugar, 'tipo'=>$tipo, 'id'=>$favorito['id']]);
+    $query = $db->prepare("UPDATE favorito SET id = :id, descricao = :texto, foto = :foto, 
+    users_id = :userid, lugar_id = :lugar, tipo_favorito_id = :tipo WHERE id = :id");
+    $query->execute(['texto'=>$texto, 'foto'=>$foto, 'lugar'=>$lugar, 'id'=>$favorito['id'],
+    'userid'=>$userid, 'tipo'=>$tipo]);
 }
 
 // função que carrega um favorito de acordo com o user e o tipo
@@ -224,6 +226,5 @@ function carregaFavUserTipo($user, $tipo){
 
     return $result;
 }
-
 
 ?>

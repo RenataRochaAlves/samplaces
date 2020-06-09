@@ -178,7 +178,7 @@ if($_POST){
                 </div>
 
                 <div id="senhaAnt">
-                <label for="senhaAnt">senha antiga</label><br>
+                <label for="senhaAnt">senha atual</label><br>
                     <input type="password" name="senhaAnt" id="senhaAnt" value="<?= $senhaAnt ?>" required><br>
                     <?= ($senhaAntOk? '': '<span class="erro">a senha antiga está incorreta ):') ?>
                 </div>
