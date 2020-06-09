@@ -12,11 +12,64 @@ if($_GET['user']){
     $perfil = carregaUser($user);
 }
 
-$favorito = carregaFavUserTipo($user, 1);
-$amigos = carregaFavUserTipo($user, 2);
-$date = carregaFavUserTipo($user, 3);
-$domingo = carregaFavUserTipo($user, 4);
+$naoTem = ['descricao' => 'Volte mais tarde, ao que tudo indica esse favorito ainda não foi cadastrado ):',
+            'foto' => 'img/nao-tem.png',
+            'lugar' => 'Oooops!'];
 
+$cadastrar = ['descricao' => 'Clique aqui para cadastrar e compartilhar o seu lugar favorito com o mundo :D',
+            'foto' => 'img/nova-imagem2.png',
+            'lugar' => 'Cadastre já!'];
+
+if(!$_SESSION || $_SESSION['user'] != $user){
+
+    if(carregaFavUserTipo($user, 1) == false){
+        $favorito = $naoTem;
+    } else {
+        $favorito = carregaFavUserTipo($user, 1);
+    }
+
+    if(carregaFavUserTipo($user, 2) == false){
+        $amigos = $naoTem;
+    } else {
+        $amigos = carregaFavUserTipo($user, 2);
+    }
+
+    if(carregaFavUserTipo($user, 3) == false){
+        $date = $naoTem;
+    } else {
+        $date = carregaFavUserTipo($user, 3);
+    }
+
+    if(carregaFavUserTipo($user, 4) == false){
+        $domingo = $naoTem;
+    } else {
+        $domingo = carregaFavUserTipo($user, 4);
+    }
+} else {
+    if(carregaFavUserTipo($user, 1) == false){
+        $favorito = $cadastrar;
+    } else {
+        $favorito = carregaFavUserTipo($user, 1);
+    }
+
+    if(carregaFavUserTipo($user, 2) == false){
+        $amigos = $cadastrar;
+    } else {
+        $amigos = carregaFavUserTipo($user, 2);
+    }
+
+    if(carregaFavUserTipo($user, 3) == false){
+        $date = $cadastrar;
+    } else {
+        $date = carregaFavUserTipo($user, 3);
+    }
+
+    if(carregaFavUserTipo($user, 4) == false){
+        $domingo = $cadastrar;
+    } else {
+        $domingo = carregaFavUserTipo($user, 4);
+    }
+}
 
 ?>
 
@@ -55,9 +108,13 @@ $domingo = carregaFavUserTipo($user, 4);
             <article class="favorito">
                 
                 <div class="imagem-grande">
-                    <a href="favorito.php?user=<?= $user ?>&fav=favorito">
-                        <img src="<?= $favorito['foto'] ?>" alt="<?= $favorito['lugar'] ?>">
-                    </a>
+                    <?php if(carregaFavUserTipo($user, 1) == false && $_SESSION['user'] == $user){ ?>
+                        <a href="cadastro-fav.php?user=<?= $user ?>&fav=favorito">
+                    <?php } else { ?>
+                        <a href="favorito.php?user=<?= $user ?>&fav=favorito">
+                    <?php } ?>
+                            <img src="<?= $favorito['foto'] ?>" alt="<?= $favorito['lugar'] ?>">
+                        </a>
                 </div>
                 <div class="info">
                     <a href="favorito.php?user=<?= $user ?>&fav=favorito">
@@ -103,7 +160,11 @@ $domingo = carregaFavUserTipo($user, 4);
             <div class="fav-outros">
                 <div class="fav-amigos">
                     <h5>encontrar os amigos</h5>
-                    <a href="favorito.php?user=<?= $user ?>&fav=amigos">
+                    <?php if(carregaFavUserTipo($user, 2) == false && $_SESSION['user'] == $user){ ?>
+                        <a href="cadastro-fav.php?user=<?= $user ?>&fav=amigos">
+                    <?php } else { ?>
+                        <a href="favorito.php?user=<?= $user ?>&fav=amigos">
+                    <?php } ?>
                         <img src="<?= $amigos['foto'] ?>" alt="<?= $amigos['lugar'] ?>">
                         <h6><?= $amigos['lugar'] ?></h6>
                         <button>ver mais   >>></button>
@@ -111,7 +172,11 @@ $domingo = carregaFavUserTipo($user, 4);
                 </div>
                 <div class="fav-date">
                     <h5>favorito para um date</h5>
-                    <a href="favorito.php?user=<?= $user ?>&fav=date">
+                    <?php if(carregaFavUserTipo($user, 3) == false && $_SESSION['user'] == $user){ ?>
+                        <a href="cadastro-fav.php?user=<?= $user ?>&fav=date">
+                    <?php } else { ?>
+                        <a href="favorito.php?user=<?= $user ?>&fav=date">
+                    <?php } ?>
                         <img src="<?= $date['foto'] ?>" alt="<?= $date['lugar'] ?>">
                         <h6><?= $date['lugar'] ?></h6>
                         <button>ver mais   >>></button>
@@ -119,7 +184,11 @@ $domingo = carregaFavUserTipo($user, 4);
                 </div>
                 <div class="fav-domingo">
                     <h5>favorito de domingo</h5>
-                    <a href="favorito.php?user=<?= $user ?>&fav=domingo">
+                    <?php if(carregaFavUserTipo($user, 4) == false && $_SESSION['user'] == $user){ ?>
+                        <a href="cadastro-fav.php?user=<?= $user ?>&fav=domingo">
+                    <?php } else { ?>
+                        <a href="favorito.php?user=<?= $user ?>&fav=domingo">
+                    <?php } ?>
                         <img src="<?= $domingo['foto'] ?>" alt="<?= $domingo['lugar'] ?>">
                         <h6><?= $domingo['lugar'] ?></h6>
                         <button>ver mais   >>></button>
@@ -142,10 +211,33 @@ $domingo = carregaFavUserTipo($user, 4);
 
             <nav class="fav-user">
                 <ul>
-                    <a href="favorito.php?user=<?= $perfil['user'] ?>&fav=favorito"><li>lugar favorito ever</li></a>
-                    <a href="favorito.php?user=<?= $perfil['user'] ?>&fav=amigos"><li>favorito para encontrar os amigos</li></a>
-                    <a href="favorito.php?user=<?= $perfil['user'] ?>&fav=date"><li>favorito para um date</li></a>
-                    <a href="favorito.php?user=<?= $perfil['user'] ?>&fav=domingo"><li>favorito de domingo</li></a>
+                <?php if(carregaFavUserTipo($user, 1) == false && $_SESSION['user'] == $user){ ?>
+                        <a href="cadastro-fav.php?user=<?= $user ?>&fav=favorito">
+                    <?php } else { ?>
+                        <a href="favorito.php?user=<?= $user ?>&fav=favorito">
+                    <?php } ?>
+                    <li>lugar favorito ever</li></a>
+
+                    <?php if(carregaFavUserTipo($user, 2) == false && $_SESSION['user'] == $user){ ?>
+                        <a href="cadastro-fav.php?user=<?= $user ?>&fav=amigos">
+                    <?php } else { ?>
+                        <a href="favorito.php?user=<?= $user ?>&fav=amigos">
+                    <?php } ?>
+                    <li>favorito para encontrar os amigos</li></a>
+
+                    <?php if(carregaFavUserTipo($user, 3) == false && $_SESSION['user'] == $user){ ?>
+                        <a href="cadastro-fav.php?user=<?= $user ?>&fav=date">
+                    <?php } else { ?>
+                        <a href="favorito.php?user=<?= $user ?>&fav=date">
+                    <?php } ?>
+                    <li>favorito para um date</li></a>
+
+                    <?php if(carregaFavUserTipo($user, 4) == false && $_SESSION['user'] == $user){ ?>
+                        <a href="cadastro-fav.php?user=<?= $user ?>&fav=domingo">
+                    <?php } else { ?>
+                        <a href="favorito.php?user=<?= $user ?>&fav=domingo">
+                    <?php } ?>
+                    <li>favorito de domingo</li></a>
                 </ul>
             </nav>
 

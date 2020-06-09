@@ -227,4 +227,5 @@ function carregaFavUserTipo($user, $tipo){
     return $result;
 }
 
+
 ?>
