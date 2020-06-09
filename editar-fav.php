@@ -50,9 +50,6 @@ if($_POST){
         $foto ='img/favoritos/'.$fileName;
 
         } 
-        // else {
-        //     $fotoOk = false; 
-        // }
     }
     
     if($lugarOk && $textoOk && $fotoOk){
@@ -62,12 +59,6 @@ if($_POST){
         header('location: perfil.php?user='.$user);
     }
 }
-    
-    
-
-
-    
-
 
 
 ?>
@@ -131,9 +122,11 @@ if($_POST){
         </div>
 
         <div class="usuario">
-            <img src= "<?= $perfil['foto'] ?>" alt= <?= $perfil['nome'] ?>>
-            <h5><?= $perfil['nome'] ?></h5>
-            <h6>@<?= $perfil['user'] ?></h6>
+            <a href="perfil.php?user=<?= $user ?>">
+                <img src= "<?= $perfil['foto'] ?>" alt= <?= $perfil['nome'] ?>>
+                <h5><?= $perfil['nome'] ?></h5>
+                <h6>@<?= $perfil['user'] ?></h6>
+            </a>
             <p><?php if($perfil['bairro'] == "não mora em São Paulo" || $perfil['bairro'] == ""){
                         echo $perfil['bairro'];
                     } else{

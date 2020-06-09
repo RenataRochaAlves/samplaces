@@ -148,6 +148,10 @@ main {
     border-radius: 20px;
 }
 
+.info a{
+    text-decoration: none;
+}
+
 .info h4 {
     font-family: tommyregular;
     color: #1da8d4;
@@ -293,6 +297,10 @@ main {
 
 }
 
+.usuario a {
+    text-decoration: none;
+}
+
 .usuario img {
     width: 100px;
     height: 100px;
@@ -314,6 +322,7 @@ main {
     font-family: tommymedium;
     color: #a0a0a0;
     margin-bottom: 8px;
+    text-align: center;
 }
 
 .usuario p {
