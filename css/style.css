@@ -461,3 +461,28 @@ footer nav ul li {
 ::-webkit-input-placeholder {
     color: rgb(188, 183, 194);
 }
+
+/* aqui começa o logout */
+.main-logout {
+    height: 250px;
+}
+
+.logout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout h3 {
+    margin-bottom: 20px;
+}
+
+.logout p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.logout a {
+    width: 100%;
+}

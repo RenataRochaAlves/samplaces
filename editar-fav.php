@@ -82,7 +82,8 @@ if($_POST){
                 <a href="#"><li>top</li></a>
                 <a href="#"><li>recentes</li></a>
                 <a href="#"><li>amigos</li></a>
-                <a href="#"><li id="logout">logout</li></a>
+                <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>
+                <a href="logout.php"><li id="logout">logout</li></a>
             </ul>
             <div class="busca">
                 <input type="text" name="busca" id="busca" value="">
@@ -167,13 +168,15 @@ if($_POST){
                 </ul>
             </nav>
 
-            <nav class="menu-user">
-                <ul>
-                    <a href="#"><li>salvos</li></a>
-                    <a href="editar-user.php?user=<?= $perfil['user'] ?>"><li>configurações</li></a>
-                    <a href="#"><li>sair</li></a>
-                </ul>
-            </nav>
+            <?php if($_SESSION && $_SESSION['user'] == $perfil['user']){ ?>
+                <nav class="menu-user">
+                    <ul>
+                        <a href="#"><li>salvos</li></a>
+                        <a href="editar-user.php?user=<?= $perfil['user'] ?>"><li>configurações</li></a>
+                        <a href="#"><li>sair</li></a>
+                    </ul>
+                </nav>
+            <?php } ?>
         </div>
     </main>
 

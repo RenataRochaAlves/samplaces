@@ -19,6 +19,12 @@ if($_GET['fav']){
 
 $favcad = carregaFavUserTipo($perfil['user'], $favorito['id']);
 
+if($favcad == false){
+    $favcad = ['descricao' => 'Volte mais tarde, ao que tudo indica esse favorito ainda não foi cadastrado ):',
+    'foto' => 'img/nao-tem.png',
+    'lugar' => 'Oooops!'];
+}
+
 
 ?>
 
@@ -38,8 +44,13 @@ $favcad = carregaFavUserTipo($perfil['user'], $favorito['id']);
             <ul>
                 <a href="#"><li>top</li></a>
                 <a href="#"><li>recentes</li></a>
-                <a href="#"><li>amigos</li></a>
-                <a href="#"><li id="logout">logout</li></a>
+                <?php if($_SESSION) {?>
+                    <a href="#"><li>amigos</li></a>
+                    <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>
+                    <a href="logout.php"><li id="logout">logout</li></a>
+                <?php } else { ?>
+                    <a href="login.php"><li id="logout">junte-se a nós! faça login</li></a>
+                <?php } ?>
             </ul>
             <div class="busca">
                 <input type="text" name="busca" id="busca" value="">
@@ -93,7 +104,7 @@ $favcad = carregaFavUserTipo($perfil['user'], $favorito['id']);
                         </a>
                     </div>
                     <a href="#"><button class="botao-grande">passear</button></a>
-                    <?php if($_SESSION['user'] == $user) { ?>
+                    <?php if($_SESSION && $_SESSION['user'] == $user) { ?>
                     <a href="editar-fav.php?user=<?= $user ?>&fav=<?= $curto ?>"><button class="botao-grande" style="background-color: <?= $favorito['cor'] ?>">editar favorito</button></a>
                     <?php } ?>
                 </div>
@@ -114,28 +125,28 @@ $favcad = carregaFavUserTipo($perfil['user'], $favorito['id']);
 
             <nav class="fav-user">
                 <ul>
-                <?php if(carregaFavUserTipo($user, 1) == false && $_SESSION['user'] == $user){ ?>
+                <?php if(carregaFavUserTipo($user, 1) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=favorito">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=favorito">
                     <?php } ?>
                     <li>lugar favorito ever</li></a>
 
-                    <?php if(carregaFavUserTipo($user, 2) == false && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 2) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=amigos">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=amigos">
                     <?php } ?>
                     <li>favorito para encontrar os amigos</li></a>
 
-                    <?php if(carregaFavUserTipo($user, 3) == false && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 3) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=date">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=date">
                     <?php } ?>
                     <li>favorito para um date</li></a>
 
-                    <?php if(carregaFavUserTipo($user, 4) == false && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 4) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=domingo">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=domingo">
@@ -144,13 +155,15 @@ $favcad = carregaFavUserTipo($perfil['user'], $favorito['id']);
                 </ul>
             </nav>
 
-            <nav class="menu-user">
-                <ul>
-                    <a href="#"><li>salvos</li></a>
-                    <a href="editar-user.php?user=<?= $perfil['user'] ?>"><li>configurações</li></a>
-                    <a href="#"><li>sair</li></a>
-                </ul>
-            </nav>
+            <?php if($_SESSION && $_SESSION['user'] == $perfil['user']){ ?>
+                <nav class="menu-user">
+                    <ul>
+                        <a href="#"><li>salvos</li></a>
+                        <a href="editar-user.php?user=<?= $perfil['user'] ?>"><li>configurações</li></a>
+                        <a href="#"><li>sair</li></a>
+                    </ul>
+                </nav>
+            <?php } ?>
         </div>
     </main>
 
