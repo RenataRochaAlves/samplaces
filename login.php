@@ -28,6 +28,7 @@ if($_POST){
             $_SESSION['user'] = $perfil['user'];
             $_SESSION['foto'] = $perfil['foto'];
             $_SESSION['email'] = $perfil['email'];
+            $_SESSION['id'] = $perfil['id'];
 
             header('location: perfil.php?user='.$user);
         } else{

@@ -20,7 +20,7 @@ $cadastrar = ['descricao' => 'Clique aqui para cadastrar e compartilhar o seu lu
             'foto' => 'img/nova-imagem2.png',
             'lugar' => 'Cadastre já!'];
 
-if(!$_SESSION || $_SESSION['user'] != $user){
+if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
 
     if(carregaFavUserTipo($user, 1) == false){
         $favorito = $naoTem;
@@ -254,6 +254,8 @@ if(!$_SESSION || $_SESSION['user'] != $user){
                         <a href="#"><li>sair</li></a>
                     </ul>
                 </nav>
+            <?php } else { ?>
+                <a href="seguir.php?user=<?= $user ?>" id="a-botao"><button class="botao-grande">seguir</button></a>
             <?php } ?>
         </div>
     </main>

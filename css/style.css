@@ -376,6 +376,9 @@ main {
     font-family: tommybold;
 }
 
+#a-botao {
+    width: 100%;
+}
 
 /* aqui começa o footer */
 
@@ -484,5 +487,49 @@ footer nav ul li {
 }
 
 .logout a {
+    width: 100%;
+}
+
+/* aqui começa a página de seguir */
+
+.seguir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+
+.imagens {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.imagens img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+#mais {
+    width: 20px;
+    height: 20px;
+}
+
+.seguir h3 {
+    color: #6e6e6e;
+    margin-bottom: 20px;
+}
+
+.seguir p {
+    color: #a0a0a0;
+    font-family: tommyregular;
+    margin-bottom: 20px;
+}
+
+.seguir a{
     width: 100%;
 }

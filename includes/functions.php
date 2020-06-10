@@ -227,5 +227,12 @@ function carregaFavUserTipo($user, $tipo){
     return $result;
 }
 
+function seguir($seguidor, $seguido){
+
+    global $db;
+
+    $query = $db->prepare("INSERT INTO users_has_users(users_id, users_id1) VALUES (:seguidor, :seguido)");
+    $query->execute(['seguidor'=>$seguidor, 'seguido'=>$seguido]);
+}
 
 ?>
