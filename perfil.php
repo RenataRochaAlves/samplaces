@@ -20,7 +20,7 @@ $cadastrar = ['descricao' => 'Clique aqui para cadastrar e compartilhar o seu lu
             'foto' => 'img/nova-imagem2.png',
             'lugar' => 'Cadastre já!'];
 
-if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
+if(isset($_SESSION['user']) == false || isset($_SESSION['user']) && $_SESSION['user'] != $user){
 
     if(carregaFavUserTipo($user, 1) == false){
         $favorito = $naoTem;
@@ -91,7 +91,7 @@ if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
             <ul>
                 <a href="#"><li>top</li></a>
                 <a href="#"><li>recentes</li></a>
-                <?php if($_SESSION) {?>
+                <?php if(isset($_SESSION['user'])) {?>
                     <a href="#"><li>amigos</li></a>
                     <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>
                     <a href="logout.php"><li id="logout">logout</li></a>
@@ -113,7 +113,7 @@ if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
             <article class="favorito">
                 
                 <div class="imagem-grande">
-                    <?php if(carregaFavUserTipo($user, 1) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 1) == false && isset($_SESSION['user']) && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=favorito">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=favorito">
@@ -165,7 +165,7 @@ if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
             <div class="fav-outros">
                 <div class="fav-amigos">
                     <h5>encontrar os amigos</h5>
-                    <?php if(carregaFavUserTipo($user, 2) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 2) == false && isset($_SESSION['user']) && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=amigos">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=amigos">
@@ -177,7 +177,7 @@ if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
                 </div>
                 <div class="fav-date">
                     <h5>favorito para um date</h5>
-                    <?php if(carregaFavUserTipo($user, 3) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 3) == false && isset($_SESSION['user']) && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=date">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=date">
@@ -189,7 +189,7 @@ if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
                 </div>
                 <div class="fav-domingo">
                     <h5>favorito de domingo</h5>
-                    <?php if(carregaFavUserTipo($user, 4) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 4) == false && isset($_SESSION['user']) && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=domingo">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=domingo">
@@ -216,28 +216,28 @@ if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
 
             <nav class="fav-user">
                 <ul>
-                <?php if(carregaFavUserTipo($user, 1) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
+                <?php if(carregaFavUserTipo($user, 1) == false && isset($_SESSION['user']) && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=favorito">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=favorito">
                     <?php } ?>
                     <li>lugar favorito ever</li></a>
 
-                    <?php if(carregaFavUserTipo($user, 2) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 2) == false && isset($_SESSION['user']) && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=amigos">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=amigos">
                     <?php } ?>
                     <li>favorito para encontrar os amigos</li></a>
 
-                    <?php if(carregaFavUserTipo($user, 3) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 3) == false && isset($_SESSION['user']) && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=date">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=date">
                     <?php } ?>
                     <li>favorito para um date</li></a>
 
-                    <?php if(carregaFavUserTipo($user, 4) == false && $_SESSION && $_SESSION['user'] == $user){ ?>
+                    <?php if(carregaFavUserTipo($user, 4) == false && isset($_SESSION['user']) && $_SESSION['user'] == $user){ ?>
                         <a href="cadastro-fav.php?user=<?= $user ?>&fav=domingo">
                     <?php } else { ?>
                         <a href="favorito.php?user=<?= $user ?>&fav=domingo">
@@ -246,7 +246,7 @@ if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
                 </ul>
             </nav>
 
-            <?php if($_SESSION && $_SESSION['user'] == $perfil['user']){ ?>
+            <?php if(isset($_SESSION['user']) && $_SESSION['user'] == $perfil['user']){ ?>
                 <nav class="menu-user">
                     <ul>
                         <a href="#"><li>salvos</li></a>
@@ -254,9 +254,13 @@ if(!$_SESSION || $_SESSION && $_SESSION['user'] != $user){
                         <a href="#"><li>sair</li></a>
                     </ul>
                 </nav>
-            <?php } else { ?>
-                <a href="seguir.php?user=<?= $user ?>" id="a-botao"><button class="botao-grande">seguir</button></a>
-            <?php } ?>
+            <?php } else { 
+                if(verificaSeguir($_SESSION['id'], $perfil['id'])){?>
+                <a href="seguir.php?user=<?= $user ?>&&action=excluir" id="a-botao">
+                    <button class="botao-grande" style="background-color: #eb4100">deixar de seguir</button></a>
+                <?php } else { ?>
+                    <a href="seguir.php?user=<?= $user ?>" id="a-botao"><button class="botao-grande">seguir</button></a>
+            <?php } } ?>
         </div>
     </main>
 

@@ -227,12 +227,35 @@ function carregaFavUserTipo($user, $tipo){
     return $result;
 }
 
+// função para começar a seguir um usuário
 function seguir($seguidor, $seguido){
 
     global $db;
 
     $query = $db->prepare("INSERT INTO users_has_users(users_id, users_id1) VALUES (:seguidor, :seguido)");
     $query->execute(['seguidor'=>$seguidor, 'seguido'=>$seguido]);
+}
+
+// função para deixar de seguir um usuário
+function excluirSeguir($seguidor, $seguido){
+
+    global $db;
+
+    $query = $db->prepare("DELETE FROM users_has_users WHERE users_id = :seguidor AND users_id1 = :seguido");
+    $query->execute(['seguidor'=>$seguidor, 'seguido'=>$seguido]);
+}
+
+// verifica se está seguindo o usuário
+function verificaSeguir($seguidor, $seguido) {
+    global $db;
+
+    // procura no banco de dados o user que a pessoa quer inserir
+    $query = $db->prepare("SELECT * FROM users_has_users WHERE users_id = :seguidor AND users_id1 = :seguido");
+    $query->execute(['seguidor'=>$seguidor, 'seguido'=>$seguido]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    // compara se o resultado encontrado é igual o que a pessoa quer inserir
+    return is_array($result);
 }
 
 ?>

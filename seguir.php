@@ -12,8 +12,12 @@ if($_GET['user']){
     $perfil = carregaUser($user);
 }
 
-if($_SESSION){
+if(isset($_SESSION['user']) && isset($_GET['action']) == false){
     seguir($_SESSION['id'], $perfil['id']);
+}
+
+if(isset($_GET['action']) && $_GET['action'] == "excluir"){
+    excluirSeguir($_SESSION['id'], $perfil['id']);
 }
 
 ?>
@@ -36,7 +40,7 @@ if($_SESSION){
             <ul>
                 <a href="#"><li>top</li></a>
                 <a href="#"><li>recentes</li></a>
-                <?php if($_SESSION) {?>
+                <?php if(isset($_SESSION['user'])) {?>
                     <a href="#"><li>amigos</li></a>
                     <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>
                     <a href="logout.php"><li id="logout">logout</li></a>
@@ -53,7 +57,7 @@ if($_SESSION){
 
     <main>
         <div class="conteudo seguir">
-            <?php if($_SESSION){ ?>
+            <?php if(isset($_SESSION['user']) && isset($_GET['action']) == false){ ?>
                 <div class="imagens">
                     <img src="<?= $_SESSION['foto'] ?>" alt="<?= $_SESSION['nome'] ?>">
                     <img src="img/mais.png" alt="mais" id="mais">
@@ -62,10 +66,14 @@ if($_SESSION){
                 <h3>Eba!</h3>
                 <p>agora você está seguindo <?= $perfil['nome'] ?></p>
                 <a href="perfil.php?user=<?= $user ?>"><button class="botao-grande">ir para o perfil</button></a>
-            <?php } else { ?>
+            <?php } if(isset($_SESSION['user']) == false){ ?>
                 <h3>Oooops!</h3>
                 <p>você precisa fazer login para seguir <?= $perfil['nome'] ?></p>
                 <a href="login.php"><button class="botao-grande">fazer login</button></a>
+            <?php } if(isset($_GET['action']) && $_GET['action'] == "excluir"){ ?>
+                <h3>Poxa ):</h3>
+                <p>você deixou de seguir <?= $perfil['nome'] ?></p>
+                <a href="perfil.php?user=<?= $user ?>"><button class="botao-grande">ir para o perfil</button></a>
             <?php } ?>
                 
         </div>

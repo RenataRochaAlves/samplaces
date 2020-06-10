@@ -168,7 +168,7 @@ if($_POST){
                 </ul>
             </nav>
 
-            <?php if($_SESSION && $_SESSION['user'] == $perfil['user']){ ?>
+            <?php if(isset($_SESSION['user']) && $_SESSION['user'] == $perfil['user']){ ?>
                 <nav class="menu-user">
                     <ul>
                         <a href="#"><li>salvos</li></a>
@@ -176,6 +176,8 @@ if($_POST){
                         <a href="#"><li>sair</li></a>
                     </ul>
                 </nav>
+            <?php } else { ?>
+                <a href="seguir.php?user=<?= $user ?>" id="a-botao"><button class="botao-grande">seguir</button></a>
             <?php } ?>
         </div>
     </main>
