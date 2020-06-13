@@ -97,7 +97,7 @@ header nav ul li {
 }
 
 .busca button {
-    background-color: none;
+    background-color: white;
     border: none;
 }
 
@@ -279,7 +279,7 @@ main {
     font-family: tommymedium;
     font-size: 0.9rem;
     color: #a6cda0;
-    background-color: none;
+    background-color: white;
     border: none;
 }
 
@@ -533,3 +533,64 @@ footer nav ul li {
 .seguir a{
     width: 100%;
 }
+
+/* aqui começa o exibir */
+.exibir {
+    padding-right: 0px;
+}
+
+.posts {
+    padding-right: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.posts div {
+    width: calc(100%/4 - 30px);
+    height: auto;
+}
+
+.post div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tipo a {
+    width: 12%;
+}
+
+.tipo a img {
+    width: 100%;
+    border-radius: 0px;
+}
+
+.tipo * {
+    margin-bottom: 0px;
+}
+
+.user-post a{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-post a h5{
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-left: 10px;
+}
+
+.user-post a img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+}
+
+
+

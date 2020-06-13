@@ -47,21 +47,26 @@ if($_GET['lugar']){
     </header>
 
     <main>
-        <div class="conteudo">
+        <div class="conteudo exibir">
 
             <h3><?= $posts[0]['nome'] ?></h3>
             
 
-            <div class="fav-outros">
+            <div class="fav-outros posts">
                 <?php foreach($posts as $post): ?>
-                <div>
+                <div class="post">
                     <a href="favorito.php?user=<?= $post['user'] ?>&fav=<?= $post['tipo'] ?>">
                         <img src="<?= $post['foto'] ?>" alt="<?= $post['nome'] ?>, por @<?= $post['user'] ?>">
                     </a>
-                    <h6><?= $post['nome'] ?></h6>
+                    <div class="tipo">
+                        <h6><?= $post['nome'] ?></h6>
+                        <a href="#">
+                            <img src="img/<?= $post['tipo'] ?>.png" alt="<?= $post['tipo'] ?>">
+                        </a>
+                    </div>
                     <div class="user-post">
                         <a href="perfil.php?user=<?= $post['user'] ?>">
-                            <img src="<?= $post['foto_user'] ?>" alt="<?= $post['user'] ?>">
+                            <img  src="<?= $post['foto_user'] ?>" alt="<?= $post['user'] ?>">
                             <h5>@<?= $post['user'] ?></h5>
                         </a>
                     </div>

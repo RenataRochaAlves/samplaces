@@ -97,7 +97,7 @@ if($favcad == false){
                             </div>
                         </a>
                     </div>
-                    <a href="#"><button class="botao-grande">passear</button></a>
+                    <a href="exibir.php?lugar=<?= $favcad['idlugar'] ?>"><button class="botao-grande">passear</button></a>
                     <?php if(isset($_SESSION['user']) && $_SESSION['user'] == $user) { ?>
                     <a href="editar-fav.php?user=<?= $user ?>&fav=<?= $curto ?>"><button class="botao-grande" style="background-color: <?= $favorito['cor'] ?>">editar favorito</button></a>
                     <?php } ?>
