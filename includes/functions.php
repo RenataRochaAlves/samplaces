@@ -210,6 +210,7 @@ function carregaFavUserTipo($user, $tipo){
                             f.foto,
                             u.user,
                             l.nome as lugar,
+                            l.id as idlugar,
                             t.nome as tipo
                         FROM 
                             favorito as f
@@ -257,5 +258,20 @@ function verificaSeguir($seguidor, $seguido) {
     // compara se o resultado encontrado é igual o que a pessoa quer inserir
     return is_array($result);
 }
+
+// função que verifica quantos vezes um lugar foi favoritado pelo tipo
+function quantFav($idLugar, $idTipo){
+    global $db;
+
+
+    $query = $db->prepare("SELECT COUNT(lugar_id) AS qtd FROM favorito WHERE lugar_id = :lugar AND tipo_favorito_id = :tipo");
+    $query->execute(['lugar'=>$idLugar, 'tipo'=>$idTipo]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    $result = $result['qtd'];
+
+    return $result;
+}
+
 
 ?>

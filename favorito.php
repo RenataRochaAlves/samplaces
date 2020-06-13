@@ -75,31 +75,25 @@ if($favcad == false){
                         <a href="#">
                             <div id="fav">
                                 <img src="img/favorito.png" alt="favorito">
-                                <h6>368</h6>
+                                <h6><?= quantFav($favcad['idlugar'], 1) ?></h6>
                             </div>
                         </a>
                         <a href="#">
                             <div id="amigos">
                                 <img src="img/amigos.png" alt="amigos">
-                                <h6>368</h6>
+                                <h6><?= quantFav($favcad['idlugar'], 2) ?></h6>
                             </div>
                         </a>
                         <a href="#">
                             <div id="date">
                                 <img src="img/date.png" alt="date">
-                                <h6>368</h6>
+                                <h6><?= quantFav($favcad['idlugar'], 3) ?></h6>
                             </div>
                         </a>
                         <a href="#">
                             <div id="domingo">
                                 <img src="img/domingo.png" alt="domingo">
-                                <h6>368</h6>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div id="salvo">
-                                <img src="img/salvo.png" alt="salvo">
-                                <h6>368</h6>
+                                <h6><?= quantFav($favcad['idlugar'], 4) ?></h6>
                             </div>
                         </a>
                     </div>

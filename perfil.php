@@ -122,7 +122,11 @@ if(isset($_SESSION['user']) == false || isset($_SESSION['user']) && $_SESSION['u
                         </a>
                 </div>
                 <div class="info">
-                    <a href="favorito.php?user=<?= $user ?>&fav=favorito">
+                <?php if(carregaFavUserTipo($user, 1) == false && isset($_SESSION['user']) && $_SESSION['user'] == $user){ ?>
+                        <a href="cadastro-fav.php?user=<?= $user ?>&fav=favorito">
+                    <?php } else { ?>
+                        <a href="favorito.php?user=<?= $user ?>&fav=favorito">
+                    <?php } ?>
                         <h4><?= $favorito['lugar'] ?></h4>
                     </a>
                     <p><?= $favorito['descricao'] ?></p>
@@ -130,31 +134,25 @@ if(isset($_SESSION['user']) == false || isset($_SESSION['user']) && $_SESSION['u
                         <a href="#">
                             <div id="fav">
                                 <img src="img/favorito.png" alt="favorito">
-                                <h6>368</h6>
+                                <h6><?= quantFav($favorito['idlugar'], 1) ?></h6>
                             </div>
                         </a>
                         <a href="#">
                             <div id="amigos">
                                 <img src="img/amigos.png" alt="amigos">
-                                <h6>368</h6>
+                                <h6><?= quantFav($favorito['idlugar'], 2) ?></h6>
                             </div>
                         </a>
                         <a href="#">
                             <div id="date">
                                 <img src="img/date.png" alt="date">
-                                <h6>368</h6>
+                                <h6><?= quantFav($favorito['idlugar'], 3) ?></h6>
                             </div>
                         </a>
                         <a href="#">
                             <div id="domingo">
                                 <img src="img/domingo.png" alt="domingo">
-                                <h6>368</h6>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div id="salvo">
-                                <img src="img/salvo.png" alt="salvo">
-                                <h6>368</h6>
+                                <h6><?= quantFav($favorito['idlugar'], 4) ?></h6>
                             </div>
                         </a>
                     </div>
