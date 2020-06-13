@@ -302,5 +302,34 @@ function exibirLugar($idLugar){
     return $result;
 }
 
+// função que exibe todos os registros do lugar filtrando por tipo
+function exibirLugarTipo($idLugar, $idTipo){
+    global $db;
+
+    $query = $db->prepare("SELECT 
+                                f.foto,
+                                f.lugar_id,
+                                l.nome,
+                                f.users_id,
+                                u.foto as foto_user,
+                                u.user,
+                                t.id as id_tipo,
+                                t.curto as tipo
+                            FROM 
+                                users as u
+                            INNER JOIN
+                                favorito as f
+                            INNER JOIN
+                                lugar as l
+                            JOIN
+                                tipo_favorito as t
+                            ON f.users_id = u.id AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
+                            WHERE f.lugar_id = :lugar AND f.tipo_favorito_id = :tipo");
+    $query->execute(['lugar'=>$idLugar, 'tipo'=>$idTipo]);
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
 
 ?>

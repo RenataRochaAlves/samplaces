@@ -5,11 +5,19 @@ include("includes/functions.php");
 session_start();
 
 
-if($_GET['lugar']){
+if(isset($_GET['lugar'])){
     $lugar = $_GET['lugar'];
 
     $posts = exibirLugar($lugar);
+
+    if(isset($_GET['tipo'])){
+        $tipo = $_GET['tipo'];
+
+        $posts = exibirLugarTipo($lugar, $tipo);
+    }
 }
+
+
 
 ?>
 
@@ -60,7 +68,7 @@ if($_GET['lugar']){
                     </a>
                     <div class="tipo">
                         <h6><?= $post['nome'] ?></h6>
-                        <a href="#">
+                        <a href="exibir.php?lugar=<?= $post['lugar_id'] ?>&tipo=<?= $post['id_tipo'] ?>">
                             <img src="img/<?= $post['tipo'] ?>.png" alt="<?= $post['tipo'] ?>">
                         </a>
                     </div>

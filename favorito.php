@@ -157,9 +157,13 @@ if($favcad == false){
                         <a href="#"><li>sair</li></a>
                     </ul>
                 </nav>
-            <?php } else { ?>
-                <a href="seguir.php?user=<?= $user ?>" id="a-botao"><button class="botao-grande">seguir</button></a>
-            <?php } ?>
+            <?php } else { 
+                if(isset($_SESSION['id']) && verificaSeguir($_SESSION['id'], $perfil['id'])){?>
+                <a href="seguir.php?user=<?= $user ?>&&action=excluir" id="a-botao">
+                    <button class="botao-grande" style="background-color: #eb4100">deixar de seguir</button></a>
+                <?php } else { ?>
+                    <a href="seguir.php?user=<?= $user ?>" id="a-botao"><button class="botao-grande">seguir</button></a>
+            <?php } } ?>
         </div>
     </main>
 
