@@ -50,8 +50,10 @@ if($_POST){
 
         // Salvar o nome do arquivo em $foto
         $foto ='img/favoritos/'.$fileName;
-
         } 
+        if($error == 1 || $error == 2){
+            $fotoOk = false;
+        }
     }
     
     if($lugarOk && $textoOk && $fotoOk){
@@ -101,7 +103,7 @@ if($_POST){
                 <form class="form-fav" method="post" enctype="multipart/form-data">
                 
                 <div class="imagem-grande">
-                    <?= ($fotoOk? '' : '<span class="erro">a imagem é inválida ):')?>
+                    <?= ($fotoOk? '' : '<span class="erro">a imagem é muito grande ):')?>
                     <label class="select-foto">
                             <input type="file" name="foto" id="foto" accept=".jpg,.jpeg,.png,.gif" value="<?= $foto ?>">
 

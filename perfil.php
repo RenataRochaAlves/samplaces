@@ -156,7 +156,7 @@ if(isset($_SESSION['user']) == false || isset($_SESSION['user']) && $_SESSION['u
                             </div>
                         </a>
                     </div>
-                    <a href="#"><button class="botao-grande">passear</button></a>
+                    <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>"><button class="botao-grande">passear</button></a>
                 </div>
             </article>
 
@@ -253,7 +253,7 @@ if(isset($_SESSION['user']) == false || isset($_SESSION['user']) && $_SESSION['u
                     </ul>
                 </nav>
             <?php } else { 
-                if(verificaSeguir($_SESSION['id'], $perfil['id'])){?>
+                if(isset($_SESSION['id']) && verificaSeguir($_SESSION['id'], $perfil['id'])){?>
                 <a href="seguir.php?user=<?= $user ?>&&action=excluir" id="a-botao">
                     <button class="botao-grande" style="background-color: #eb4100">deixar de seguir</button></a>
                 <?php } else { ?>

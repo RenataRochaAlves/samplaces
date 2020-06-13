@@ -257,7 +257,7 @@ use samplaces;
 
 ALTER TABLE users MODIFY user varchar(45) NOT NULL;
 
-SELECT * FROM lugar;
+SELECT * FROM favorito;
 
 SELECT 
 	f.id,
@@ -276,6 +276,67 @@ INNER JOIN
 	tipo_favorito as t
 ON u.id = f.users_id AND l.id = f.lugar_id AND t.id = f.tipo_favorito_id
 WHERE u.user = "renas" AND t.id = 3;
+
+DELETE FROM users_has_users WHERE users_id = 36 AND users_id1 = 36;
+
+SELECT COUNT(lugar_id)
+FROM favorito
+WHERE lugar_id = 17 AND tipo_favorito_id = 4;
+
+SELECT * FROM favorito;
+
+SELECT 
+	f.foto,
+    f.lugar_id,
+    l.nome,
+    f.users_id,
+    u.foto as foto_user,
+    u.user
+FROM 
+	users as u
+INNER JOIN
+	favorito as f
+INNER JOIN
+	lugar as l
+ON f.users_id = u.id AND f.lugar_id = l.id 
+WHERE f.lugar_id = 15
+UNION
+SELECT
+	t.id as id_tipo,
+    t.nome as tipo,
+    null,
+    null,
+    null,
+    null
+FROM 
+	favorito as f
+INNER JOIN 
+	tipo_favorito as t
+ON f.tipo_favorito_id = t.id
+WHERE f.lugar_id = 15;
+
+SELECT 
+	f.foto,
+    f.lugar_id,
+    l.nome,
+    f.users_id,
+    u.foto as foto_user,
+    u.user,
+    t.id as id_tipo,
+    t.nome as tipo
+FROM 
+	users as u
+INNER JOIN
+	favorito as f
+INNER JOIN
+	lugar as l
+JOIN
+	tipo_favorito as t
+ON f.users_id = u.id AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
+WHERE f.lugar_id = 15;
+
+
+
 
 
 
