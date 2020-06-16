@@ -323,7 +323,7 @@ SELECT
     u.foto as foto_user,
     u.user,
     t.id as id_tipo,
-    t.nome as tipo
+    t.curto as tipo
 FROM 
 	users as u
 INNER JOIN
@@ -334,6 +334,8 @@ JOIN
 	tipo_favorito as t
 ON f.users_id = u.id AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
 WHERE f.lugar_id = 15;
+
+
 
 
 

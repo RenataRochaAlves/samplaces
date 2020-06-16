@@ -10,12 +10,29 @@ if(isset($_GET['lugar'])){
 
     $posts = exibirLugar($lugar);
 
+    $nome = $posts[0]['nome'];
+
     if(isset($_GET['tipo'])){
         $tipo = $_GET['tipo'];
 
         $posts = exibirLugarTipo($lugar, $tipo);
     }
 }
+
+if(isset($_SESSION['id']) && isset($_SESSION['user'])){
+    $perfil = carregaUser($_SESSION['user']);
+
+    if(isset($_GET['amigos'])){
+        $idUser = $_SESSION['id'];
+
+        $posts = exibirLugarAmigos($idUser);
+
+        $amigos = exibirSeguindo($idUser);
+
+        $nome = "Amigos";
+    }
+}
+
 
 
 
@@ -29,7 +46,7 @@ if(isset($_GET['lugar'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title><?= $posts[0]['nome'] ?> | Samplaces</title>
+    <title><?= $nome ?> | Samplaces</title>
 </head>
 <body>
 
@@ -40,7 +57,7 @@ if(isset($_GET['lugar'])){
                 <a href="#"><li>top</li></a>
                 <a href="#"><li>recentes</li></a>
                 <?php if(isset($_SESSION['user'])) {?>
-                    <a href="#"><li>amigos</li></a>
+                    <a href="exibir.php?amigos=true"><li>amigos</li></a>
                     <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>
                     <a href="logout.php"><li id="logout">logout</li></a>
                 <?php } else { ?>
@@ -57,7 +74,23 @@ if(isset($_GET['lugar'])){
     <main>
         <div class="conteudo exibir">
 
-            <h3><?= $posts[0]['nome'] ?></h3>
+            <?php if(isset($_GET['amigos']) && isset($_SESSION['id'])) { ?>
+                <h3>amigos</h3>
+                <div class="amigos">
+                    <?php foreach($amigos as $amigo): ?>
+                        <a href="perfil.php?user=<?= $amigo['user'] ?>">
+                            <div class="amigo">
+                                <img src="<?= $amigo['foto'] ?>" alt="<?= $amigo['nome'] ?>">
+                                <h5><?= $amigo['nome'] ?></h5>
+                                <p>@<?= $amigo['user'] ?></p>
+                            </div>
+                        </a>
+                    <?php endforeach ?>
+                </div>
+                <h3>últimos favoritos</h3>   
+            <?php } else { ?>
+                <h3><?= $posts[0]['nome'] ?></h3>
+            <?php } ?>
             
 
             <div class="fav-outros posts">
@@ -80,6 +113,8 @@ if(isset($_GET['lugar'])){
                     </div>
                 </div>
                 <?php endforeach; ?>
+            </div>
+        </div>
     </main>
 
     <footer>

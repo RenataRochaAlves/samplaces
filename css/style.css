@@ -537,6 +537,8 @@ footer nav ul li {
 /* aqui começa o exibir */
 .exibir {
     padding-right: 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 .posts {
@@ -560,6 +562,10 @@ footer nav ul li {
     align-items: center;
 }
 
+.user-post {
+    margin-bottom: 30px;
+}
+
 .tipo a {
     width: 12%;
 }
@@ -571,6 +577,10 @@ footer nav ul li {
 
 .tipo * {
     margin-bottom: 0px;
+}
+
+.tipo h6 {
+    font-size: 0.9rem;
 }
 
 .user-post a{
@@ -591,6 +601,46 @@ footer nav ul li {
     height: 30px;
     border-radius: 100px;
 }
+
+.amigos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.amigos a {
+    text-decoration: none;
+}
+
+.amigo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.amigo img {
+    width: 90px;
+    height: 90px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+
+.amigo h5 {
+    font-size: 1rem;
+    color: #6e6e6e;
+}
+
+.amigo p {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+}
+
 
 
 

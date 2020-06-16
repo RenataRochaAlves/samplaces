@@ -41,7 +41,7 @@ if(isset($_GET['action']) && $_GET['action'] == "excluir"){
                 <a href="#"><li>top</li></a>
                 <a href="#"><li>recentes</li></a>
                 <?php if(isset($_SESSION['user'])) {?>
-                    <a href="#"><li>amigos</li></a>
+                    <a href="exibir.php?amigos=true"><li>amigos</li></a>
                     <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>
                     <a href="logout.php"><li id="logout">logout</li></a>
                 <?php } else { ?>

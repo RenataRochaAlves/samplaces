@@ -92,7 +92,7 @@ if(isset($_SESSION['user']) == false || isset($_SESSION['user']) && $_SESSION['u
                 <a href="#"><li>top</li></a>
                 <a href="#"><li>recentes</li></a>
                 <?php if(isset($_SESSION['user'])) {?>
-                    <a href="#"><li>amigos</li></a>
+                    <a href="exibir.php?amigos=true"><li>amigos</li></a>
                     <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>
                     <a href="logout.php"><li id="logout">logout</li></a>
                 <?php } else { ?>
@@ -131,25 +131,25 @@ if(isset($_SESSION['user']) == false || isset($_SESSION['user']) && $_SESSION['u
                     </a>
                     <p><?= $favorito['descricao'] ?></p>
                     <div class="icones">
-                        <a href="#">
+                        <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=1">
                             <div id="fav">
                                 <img src="img/favorito.png" alt="favorito">
                                 <h6><?= quantFav($favorito['idlugar'], 1) ?></h6>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=2">
                             <div id="amigos">
                                 <img src="img/amigos.png" alt="amigos">
                                 <h6><?= quantFav($favorito['idlugar'], 2) ?></h6>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=3">
                             <div id="date">
                                 <img src="img/date.png" alt="date">
                                 <h6><?= quantFav($favorito['idlugar'], 3) ?></h6>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=4">
                             <div id="domingo">
                                 <img src="img/domingo.png" alt="domingo">
                                 <h6><?= quantFav($favorito['idlugar'], 4) ?></h6>

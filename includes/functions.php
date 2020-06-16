@@ -259,6 +259,27 @@ function verificaSeguir($seguidor, $seguido) {
     return is_array($result);
 }
 
+// função que exibe todas as pessoas que o usuario segue
+function exibirSeguindo($userid){
+    global $db;
+
+    $query = $db->prepare("SELECT 
+                                u.user,
+                                u.id,
+                                u.nome,
+                                u.foto
+                            FROM 
+                                users as u
+                            INNER JOIN
+                                users_has_users as s
+                            ON u.id = s.users_id1
+                            WHERE s.users_id = :id");
+    $query->execute(['id'=>$userid]);
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
 // função que verifica quantos vezes um lugar foi favoritado pelo tipo
 function quantFav($idLugar, $idTipo){
     global $db;
@@ -331,5 +352,38 @@ function exibirLugarTipo($idLugar, $idTipo){
     return $result;
 }
 
+// função que exibe todos os posts dos amigos de uma pessoa
+function exibirLugarAmigos($idUser) {
+    global $db;
+
+    $query = $db->prepare("SELECT 
+                                f.id as id_favorito,
+                                f.foto,
+                                f.lugar_id,
+                                l.nome,
+                                f.users_id,
+                                u.foto as foto_user,
+                                u.user,
+                                t.id as id_tipo,
+                                t.curto as tipo
+                            FROM 
+                                users as u
+                            INNER JOIN
+                                favorito as f
+                            INNER JOIN
+                                lugar as l
+                            JOIN
+                                tipo_favorito as t
+                            JOIN 
+                                users_has_users as p
+                            ON p.users_id1 = f.users_id AND p.users_id1 = u.id 
+                            AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
+                            WHERE p.users_id = :id
+                            ORDER BY f.id DESC");
+    $query->execute(['id'=>$idUser]);
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}
 
 ?>
