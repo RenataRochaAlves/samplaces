@@ -33,6 +33,12 @@ if(isset($_SESSION['id']) && isset($_SESSION['user'])){
     }
 }
 
+if(isset($_GET['recente'])) {
+    $posts = exibirRecente();
+
+    $nome = "Recentes";
+}
+
 
 
 
@@ -88,7 +94,9 @@ if(isset($_SESSION['id']) && isset($_SESSION['user'])){
                     <?php endforeach ?>
                 </div>
                 <h3>últimos favoritos</h3>   
-            <?php } else { ?>
+            <?php } if(isset($_GET['recente'])) {?>
+                <h3>recentes</h3>
+            <?php } if(isset($_GET['lugar'])) {?>
                 <h3><?= $posts[0]['nome'] ?></h3>
             <?php } ?>
             

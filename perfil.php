@@ -90,7 +90,7 @@ if(isset($_SESSION['user']) == false || isset($_SESSION['user']) && $_SESSION['u
         <nav>
             <ul>
                 <a href="#"><li>top</li></a>
-                <a href="#"><li>recentes</li></a>
+                <a href="exibir.php?recente=true"><li>recentes</li></a>
                 <?php if(isset($_SESSION['user'])) {?>
                     <a href="exibir.php?amigos=true"><li>amigos</li></a>
                     <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>

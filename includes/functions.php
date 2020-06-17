@@ -386,4 +386,35 @@ function exibirLugarAmigos($idUser) {
     return $result;
 }
 
+// função que exibe os favoritos mais recentes
+function exibirRecente(){
+    global $db;
+
+    $query = $db->prepare("SELECT 
+                                f.id as id_favorito,
+                                f.foto,
+                                f.lugar_id,
+                                l.nome,
+                                f.users_id,
+                                u.foto as foto_user,
+                                u.user,
+                                t.id as id_tipo,
+                                t.curto as tipo
+                            FROM 
+                                users as u
+                            INNER JOIN
+                                favorito as f
+                            INNER JOIN
+                                lugar as l
+                            JOIN
+                                tipo_favorito as t
+                            ON u.id = f.users_id AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
+                            ORDER BY f.id DESC");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+
 ?>
