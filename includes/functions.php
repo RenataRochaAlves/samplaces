@@ -417,4 +417,30 @@ function exibirRecente(){
 }
 
 
+// função que busca um lugar pelo nome
+function buscaLugar($busca){
+    global $db;
+
+    $busca = "%" . $busca . "%";
+
+    $query = $db->prepare("SELECT id, nome FROM lugar WHERE nome LIKE :busca");
+    $query->execute(['busca'=>$busca]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+// função que busca por um usuário
+function buscaUser($busca){
+    global $db;
+
+    $busca = "%" . $busca . "%";
+
+    $query = $db->prepare("SELECT user FROM users WHERE user LIKE :busca OR nome LIKE :busca");
+    $query->execute(['busca'=>$busca]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
 ?>

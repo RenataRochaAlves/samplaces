@@ -25,6 +25,30 @@ if($favcad == false){
     'lugar' => 'Oooops!'];
 }
 
+$erro = true;
+
+// realizando buscas
+if(isset($_POST['busca'])){
+
+    
+    
+    $buscaUser = buscaUser($_POST['busca']);
+    $buscaLugar = buscaLugar($_POST['busca']);
+
+    if(is_array($buscaLugar)){
+        $endereco = 'exibir.php?lugar='.$buscaLugar['id'];
+    }
+    if(is_array($buscaUser)){
+        $endereco = 'perfil.php?user='.$buscaUser['user'];
+    }
+    if(is_array($buscaLugar) == false && is_array($buscaUser) == false){
+        $erro = false;
+    } else {
+        header("location: $endereco");
+    }
+
+}
+
 
 ?>
 
@@ -43,7 +67,7 @@ if($favcad == false){
         <nav>
             <ul>
                 <a href="#"><li>top</li></a>
-                <a href="#"><li>recentes</li></a>
+                <a href="exibir.php?recente=true"><li>recentes</li></a>
                 <?php if(isset($_SESSION['user'])) {?>
                     <a href="exibir.php?amigos=true"><li>amigos</li></a>
                     <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>
@@ -53,8 +77,10 @@ if($favcad == false){
                 <?php } ?>
             </ul>
             <div class="busca">
-                <input type="text" name="busca" id="busca" value="">
-                <button type="submit"><img src="img/busca.png" alt="buscar"></button>
+                <form method="POST">
+                    <input type="text" name="busca" id="busca" value="<?= ($erro? '' : 'nenhum resultado encontrado ):')?>">
+                    <button type="submit"><img src="img/busca.png" alt="buscar"></button>
+                </form>
             </div>
         </nav>
     </header>
@@ -72,25 +98,25 @@ if($favcad == false){
                     <h4 style="color: <?= $favorito['cor'] ?>"><?= $favcad['lugar'] ?></h4>
                     <p><?= $favcad['descricao'] ?></p>
                     <div class="icones">
-                        <a href="#">
+                    <a href="exibir.php?lugar=<?= $favcad['idlugar'] ?>&tipo=1">
                             <div id="fav">
                                 <img src="img/favorito.png" alt="favorito">
                                 <h6><?= quantFav($favcad['idlugar'], 1) ?></h6>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="exibir.php?lugar=<?= $favcad['idlugar'] ?>&tipo=2">
                             <div id="amigos">
                                 <img src="img/amigos.png" alt="amigos">
                                 <h6><?= quantFav($favcad['idlugar'], 2) ?></h6>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="exibir.php?lugar=<?= $favcad['idlugar'] ?>&tipo=3">
                             <div id="date">
                                 <img src="img/date.png" alt="date">
                                 <h6><?= quantFav($favcad['idlugar'], 3) ?></h6>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="exibir.php?lugar=<?= $favcad['idlugar'] ?>&tipo=4">
                             <div id="domingo">
                                 <img src="img/domingo.png" alt="domingo">
                                 <h6><?= quantFav($favcad['idlugar'], 4) ?></h6>

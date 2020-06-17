@@ -64,6 +64,29 @@ if($_POST){
     }
 }
 
+$erro = true;
+
+// realizando buscas
+if(isset($_POST['busca'])){
+
+    
+    
+    $buscaUser = buscaUser($_POST['busca']);
+    $buscaLugar = buscaLugar($_POST['busca']);
+
+    if(is_array($buscaLugar)){
+        $endereco = 'exibir.php?lugar='.$buscaLugar['id'];
+    }
+    if(is_array($buscaUser)){
+        $endereco = 'perfil.php?user='.$buscaUser['user'];
+    }
+    if(is_array($buscaLugar) == false && is_array($buscaUser) == false){
+        $erro = false;
+    } else {
+        header("location: $endereco");
+    }
+
+}
 
 ?>
 
@@ -82,7 +105,7 @@ if($_POST){
         <nav>
             <ul>
                 <a href="#"><li>top</li></a>
-                <a href="#"><li>recentes</li></a>
+                <a href="exibir.php?recente=true"><li>recentes</li></a>
                 <?php if(isset($_SESSION['user'])) {?>
                     <a href="exibir.php?amigos=true"><li>amigos</li></a>
                     <a href="perfil.php?user=<?= $_SESSION['user'] ?>"><li>perfil</li></a>
@@ -92,8 +115,10 @@ if($_POST){
                 <?php } ?>
             </ul>
             <div class="busca">
-                <input type="text" name="busca" id="busca" value="">
-                <button type="submit"><img src="img/busca.png" alt="buscar"></button>
+                <form method="POST">
+                    <input type="text" name="busca" id="busca" value="<?= ($erro? '' : 'nenhum resultado encontrado ):')?>">
+                    <button type="submit"><img src="img/busca.png" alt="buscar"></button>
+                </form>
             </div>
         </nav>
     </header>

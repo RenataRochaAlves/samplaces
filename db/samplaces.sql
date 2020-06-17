@@ -316,6 +316,7 @@ ON f.tipo_favorito_id = t.id
 WHERE f.lugar_id = 15;
 
 SELECT 
+	f.id as id_favorito,
 	f.foto,
     f.lugar_id,
     l.nome,
@@ -332,8 +333,55 @@ INNER JOIN
 	lugar as l
 JOIN
 	tipo_favorito as t
-ON f.users_id = u.id AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
-WHERE f.lugar_id = 15;
+JOIN 
+	users_has_users as p
+ON p.users_id1 = f.users_id AND p.users_id1 = u.id 
+AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
+WHERE p.users_id = 36
+ORDER BY f.id DESC;
+
+SELECT 
+	u.user,
+    u.id,
+    u.nome,
+    u.foto
+FROM 
+	users as u
+INNER JOIN
+	users_has_users as s
+ON u.id = s.users_id1
+WHERE s.users_id = 36;
+
+
+SELECT 
+	f.id as id_favorito,
+	f.foto,
+    f.lugar_id,
+    l.nome,
+    f.users_id,
+    u.foto as foto_user,
+    u.user,
+    t.id as id_tipo,
+    t.curto as tipo
+FROM 
+	users as u
+INNER JOIN
+	favorito as f
+INNER JOIN
+	lugar as l
+JOIN
+	tipo_favorito as t
+ON u.id = f.users_id AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
+ORDER BY f.id DESC;
+
+
+SELECT
+
+
+
+
+
+
 
 
 

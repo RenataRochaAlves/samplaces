@@ -27,7 +27,7 @@ include("includes/functions.php");
         <nav>
             <ul>
                 <a href="#"><li>top</li></a>
-                <a href="#"><li>recentes</li></a>
+                <a href="exibir.php?recente=true"><li>recentes</li></a>
                 <a href="login.php"><li id="logout">junte-se a nós! faça login</li></a>
             </ul>
         </nav>

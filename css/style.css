@@ -83,8 +83,13 @@ header nav ul li {
     margin-top: 20px;
 }
 
+.busca form {
+    width: 100%;
+}
+
 .busca input {
     background-color: #ecf6ea;
+    color: #799974;
     width: calc(100% - 40px);
     border: none;
     border-radius: 20px;
