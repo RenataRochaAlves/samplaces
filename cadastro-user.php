@@ -37,7 +37,10 @@ if($_POST){
     if(strlen($user) < 4){
         $userOk = false;
     }
-    if(verificaUser($user)){
+
+    $verUser = verificaUser($user);
+
+    if(is_array($verUser)){
         $userOk = false;
     }
     if($_POST['naosp'] != null){
@@ -68,20 +71,34 @@ if($_POST){
 
         // Salvar o nome do arquivo em $foto
         $foto ='img/users/'.$fileName;
-
-        } else {
-            $fotoOk = false; 
         }
+        if($error == 4){
+            $foto = "img/profile.png";
+        }
+         
     }
-}
-
-
+    
     // verifica se os dados inseridos estão certos e insere no banco de dados
     if($nomeOk && $userOk && $bairroOk && $emailOk && $senhaOk && $confirmacaoOk && $fotoOk){
         adicionaUser($nome, $user, $bairro, $email, $senha, $foto);
 
+        $id = carregaUser($user);
+
+        session_start();
+
+            $_SESSION['nome'] = $nome;
+            $_SESSION['user'] = $user;
+            $_SESSION['foto'] = $foto;
+            $_SESSION['email'] = $email;
+            $_SESSION['id'] = $id['id'];
+
+
         header('location: perfil.php?user='.$user);
     }
+}
+
+
+    
 
 
 

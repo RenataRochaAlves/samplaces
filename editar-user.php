@@ -2,6 +2,8 @@
 
 include("includes/functions.php");
 
+session_start();
+
 if($_GET['user']){
     $user = $_GET['user'];
 
@@ -227,7 +229,7 @@ if(isset($_POST['busca'])){
                 </div>
 
             
-            <button class="botao-edit" id="excluir"><a href="#">Excluir minha conta</a></button>
+            <button class="botao-edit" id="excluir"><a href="logout.php?delete=true">Excluir minha conta</a></button>
             <button class="botao-edit" type="submit">Enviar</button>
             
         </form>

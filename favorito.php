@@ -98,28 +98,44 @@ if(isset($_POST['busca'])){
                     <h4 style="color: <?= $favorito['cor'] ?>"><?= $favcad['lugar'] ?></h4>
                     <p><?= $favcad['descricao'] ?></p>
                     <div class="icones">
-                    <a href="exibir.php?lugar=<?= $favcad['idlugar'] ?>&tipo=1">
+                        <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=1">
                             <div id="fav">
                                 <img src="img/favorito.png" alt="favorito">
-                                <h6><?= quantFav($favcad['idlugar'], 1) ?></h6>
+                                <?php if(isset($favorito['idlugar'])){ ?>
+                                <h6><?= quantFav($favorito['idlugar'], 1) ?></h6>
+                                <?php } else { ?>
+                                    <h6>0</h6>
+                                <?php } ?>
                             </div>
                         </a>
-                        <a href="exibir.php?lugar=<?= $favcad['idlugar'] ?>&tipo=2">
+                        <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=2">
                             <div id="amigos">
                                 <img src="img/amigos.png" alt="amigos">
-                                <h6><?= quantFav($favcad['idlugar'], 2) ?></h6>
+                                <?php if(isset($favorito['idlugar'])){ ?>
+                                <h6><?= quantFav($favorito['idlugar'], 2) ?></h6>
+                                <?php } else { ?>
+                                    <h6>0</h6>
+                                <?php } ?>
                             </div>
                         </a>
-                        <a href="exibir.php?lugar=<?= $favcad['idlugar'] ?>&tipo=3">
+                        <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=3">
                             <div id="date">
                                 <img src="img/date.png" alt="date">
-                                <h6><?= quantFav($favcad['idlugar'], 3) ?></h6>
+                                <?php if(isset($favorito['idlugar'])){ ?>
+                                <h6><?= quantFav($favorito['idlugar'], 3) ?></h6>
+                                <?php } else { ?>
+                                    <h6>0</h6>
+                                <?php } ?>
                             </div>
                         </a>
-                        <a href="exibir.php?lugar=<?= $favcad['idlugar'] ?>&tipo=4">
+                        <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=4">
                             <div id="domingo">
                                 <img src="img/domingo.png" alt="domingo">
-                                <h6><?= quantFav($favcad['idlugar'], 4) ?></h6>
+                                <?php if(isset($favorito['idlugar'])){ ?>
+                                <h6><?= quantFav($favorito['idlugar'], 4) ?></h6>
+                                <?php } else { ?>
+                                    <h6>0</h6>
+                                <?php } ?>
                             </div>
                         </a>
                     </div>

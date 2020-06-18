@@ -646,6 +646,52 @@ footer nav ul li {
     color: #a0a0a0;
 }
 
+/* aqui começa o top */
+#topo {
+    color: #a0a0a0;
+}
 
+.top {
+    width: 100%;
+}
 
+.top .fav-outros h5 {
+    font-size: 1.3rem;
+}
 
+.top .fav-outros a li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.top .fav-amigos a li {
+    color: #a6cda0;
+}
+
+.top .fav-date a li {
+    color: #e8a510;
+}
+
+.top .fav-domingo a li {
+    color: #eb4100;
+}
+
+.top article {
+    margin-bottom: 40px;
+}
+
+.top article a {
+    text-decoration: none;
+}
+
+.top article a li{
+    font-size: 1.3rem;
+    color: #1da8d4;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.topo ol a li {
+    color: #6e6e6e;
+}

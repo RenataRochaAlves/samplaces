@@ -1,13 +1,19 @@
 <?php 
 
+include("includes/functions.php");
+
 session_start();
 
-unset($_SESSION['nome']);
-unset($_SESSION['user']);
-unset($_SESSION['foto']);
-unset($_SESSION['email']);
+if(isset($_GET['delete'])){
+    deletaUser($_SESSION['user']);
+} else {
+    unset($_SESSION['nome']);
+    unset($_SESSION['user']);
+    unset($_SESSION['foto']);
+    unset($_SESSION['email']);
+    unset($_SESSION['id']);
+}
 
-include("includes/functions.php");
 
 ?>
 
@@ -35,8 +41,13 @@ include("includes/functions.php");
 
     <main class="main-logout">
         <div class="logout">
-            <h3>até mais!</h3>
-            <p>logout efetuado com sucesso</p>
+            <?php if(isset($_GET['delete'])){ ?>
+                <h3>adeus ):</h3>
+                <p>espero que a gente se encontre de novo</p>
+            <?php } else { ?>
+                <h3>até mais!</h3>
+                <p>logout efetuado com sucesso</p>
+            <?php } ?>
             <a href="login.php"><button class="botao-grande">fazer login</button></a>
             <a href="#"><button class="botao-grande">ir para a home</button></a>
         </div> 

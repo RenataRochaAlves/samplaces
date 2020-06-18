@@ -45,7 +45,7 @@ function verificaUser($user) {
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
     // compara se o resultado encontrado é igual o que a pessoa quer inserir
-    return is_array($result);
+    return $result;
 }
 
 // função que verifica se o e-mail já foi cadastrado
@@ -86,6 +86,14 @@ function carregaUser($user){
 
     // retorna o array com as informações do usuário
     return $result;
+}
+
+// função que deleta usuário
+function deletaUser($user){
+    global $db;
+
+    $query = $db->prepare("DELETE FROM users WHERE user = :user");
+    $query->execute(['user'=>$user]);
 }
 
 // função que altera os dados do usuário
@@ -442,5 +450,54 @@ function buscaUser($busca){
 
     return $result;
 }
+
+// função que retorna os lugares mais registrados
+function topLugares(){
+    global $db;
+
+    $query = $db->prepare("SELECT
+                                count(f.lugar_id) as vezes,
+                                l.nome as lugar,
+                                l.id
+                            FROM 
+                                favorito as f
+                            INNER JOIN 
+                                lugar as l
+                            ON f.lugar_id = l.id
+                            GROUP BY l.nome
+                            ORDER BY vezes DESC
+                            LIMIT 5;");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+// função que retorna os lugares mais registrados de acordo com o tipo
+function topLugaresTipo($idTipo){
+    global $db;
+
+    $query = $db->prepare("SELECT
+                                count(f.lugar_id) as vezes,
+                                l.nome as lugar,
+                                l.id,
+                                t.nome as tipo
+                            FROM 
+                                favorito as f
+                            INNER JOIN 
+                                lugar as l
+                            JOIN
+                                tipo_favorito as t
+                            ON f.lugar_id = l.id AND f.tipo_favorito_id = t.id
+                            WHERE t.id = :id
+                            GROUP BY l.nome
+                            ORDER BY vezes DESC
+                            LIMIT 5");
+    $query->execute(['id'=>$idTipo]);
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
 
 ?>

@@ -75,8 +75,6 @@ $erro = true;
 
 // realizando buscas
 if(isset($_POST['busca'])){
-
-    
     
     $buscaUser = buscaUser($_POST['busca']);
     $buscaLugar = buscaLugar($_POST['busca']);
@@ -161,25 +159,41 @@ if(isset($_POST['busca'])){
                         <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=1">
                             <div id="fav">
                                 <img src="img/favorito.png" alt="favorito">
+                                <?php if(isset($favorito['idlugar'])){ ?>
                                 <h6><?= quantFav($favorito['idlugar'], 1) ?></h6>
+                                <?php } else { ?>
+                                    <h6>0</h6>
+                                <?php } ?>
                             </div>
                         </a>
                         <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=2">
                             <div id="amigos">
                                 <img src="img/amigos.png" alt="amigos">
+                                <?php if(isset($favorito['idlugar'])){ ?>
                                 <h6><?= quantFav($favorito['idlugar'], 2) ?></h6>
+                                <?php } else { ?>
+                                    <h6>0</h6>
+                                <?php } ?>
                             </div>
                         </a>
                         <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=3">
                             <div id="date">
                                 <img src="img/date.png" alt="date">
+                                <?php if(isset($favorito['idlugar'])){ ?>
                                 <h6><?= quantFav($favorito['idlugar'], 3) ?></h6>
+                                <?php } else { ?>
+                                    <h6>0</h6>
+                                <?php } ?>
                             </div>
                         </a>
                         <a href="exibir.php?lugar=<?= $favorito['idlugar'] ?>&tipo=4">
                             <div id="domingo">
                                 <img src="img/domingo.png" alt="domingo">
+                                <?php if(isset($favorito['idlugar'])){ ?>
                                 <h6><?= quantFav($favorito['idlugar'], 4) ?></h6>
+                                <?php } else { ?>
+                                    <h6>0</h6>
+                                <?php } ?>
                             </div>
                         </a>
                     </div>
