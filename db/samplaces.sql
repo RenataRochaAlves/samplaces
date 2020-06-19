@@ -400,6 +400,27 @@ LIMIT 5;
 
 SELECT * from users;
 
+SELECT
+	
+	f.id as id_favorito,
+	f.foto,
+    f.lugar_id,
+    l.nome,
+    f.users_id,
+    u.foto as foto_user,
+    u.user,
+    t.id as id_tipo,
+    t.curto as tipo
+FROM 
+	users as u
+INNER JOIN
+	favorito as f
+INNER JOIN
+	lugar as l
+JOIN
+	tipo_favorito as t
+ON u.id = f.users_id AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id;
+
 
 
 

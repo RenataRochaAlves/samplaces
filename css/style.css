@@ -423,6 +423,7 @@ footer nav ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 footer nav ul a {
@@ -479,7 +480,8 @@ footer nav ul li {
 
 /* aqui começa o logout */
 .main-logout {
-    height: 250px;
+    height: 53vh;
+
 }
 
 .logout {

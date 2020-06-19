@@ -101,6 +101,12 @@ if($_POST){
             editaUser($id, $nome, $user, $bairro, $email, $perfil['senha'], $foto);
         }
 
+        $_SESSION['nome'] = $nome;
+        $_SESSION['user'] = $user;
+        $_SESSION['foto'] = $foto;
+        $_SESSION['email'] = $email;
+        $_SESSION['id'] = $id;
+
         header('location: perfil.php?user='.$user);
     }
 }
@@ -237,19 +243,25 @@ if(isset($_POST['busca'])){
     </main>
 
     <footer>
-        <img src="img/logo-branco.png" alt="samplaces">
+        <a href="index.php">
+            <img src="img/logo-branco.png" alt="samplaces">
+        </a>
+        
         <nav>
             <ul>
-                <a href="#"><li>top</li></a>
-                <a href="#"><li>recentes</li></a>
-                <a href="#"><li>amigos</li></a>
+                <a href="top.php"><li>top</li></a>
+                <a href="exibir.php?recente=true"><li>recentes</li></a>
+
+                <a href="https://www.linkedin.com/in/renata-rocha-alves/" target="_blank">
+                    <img src="img/linkedin.png" alt="LinkedIn">
+                </a>
+
+                <a href="https://github.com/RenataRochaAlves/samplaces" target="_blank">
+                    <img src="img/github.png" alt="GitHub">
+                </a>
             </ul>
         </nav>
-        <a href="https://github.com/RenataRochaAlves/samplaces" target="_blank">
-            <img src="img/github.png" alt="GitHub">
-        </a>     
     </footer>
-
 
     <script>
         document.getElementById("foto").onchange = (evt) => {

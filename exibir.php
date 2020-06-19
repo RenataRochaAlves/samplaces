@@ -148,17 +148,24 @@ if(isset($_POST['busca'])){
     </main>
 
     <footer>
-        <img src="img/logo-branco.png" alt="samplaces">
+        <a href="index.php">
+            <img src="img/logo-branco.png" alt="samplaces">
+        </a>
+        
         <nav>
             <ul>
-                <a href="#"><li>top</li></a>
-                <a href="#"><li>recentes</li></a>
-                <a href="#"><li>amigos</li></a>
+                <a href="top.php"><li>top</li></a>
+                <a href="exibir.php?recente=true"><li>recentes</li></a>
+
+                <a href="https://www.linkedin.com/in/renata-rocha-alves/" target="_blank">
+                    <img src="img/linkedin.png" alt="LinkedIn">
+                </a>
+
+                <a href="https://github.com/RenataRochaAlves/samplaces" target="_blank">
+                    <img src="img/github.png" alt="GitHub">
+                </a>
             </ul>
         </nav>
-        <a href="https://github.com/RenataRochaAlves/samplaces" target="_blank">
-            <img src="img/github.png" alt="GitHub">
-        </a>     
     </footer>
 </body>
 </html>
