@@ -66,7 +66,7 @@ if(isset($_POST['busca'])){
         <img id="logo" src="img/logo-site.png" alt="samplaces">
         <nav>
             <ul>
-                <a href="#"><li>top</li></a>
+                <a href="top.php"><li>top</li></a>
                 <a href="exibir.php?recente=true"><li>recentes</li></a>
                 <?php if(isset($_SESSION['user'])) {?>
                     <a href="exibir.php?amigos=true"><li>amigos</li></a>

@@ -32,7 +32,7 @@ if(isset($_GET['delete'])){
         <img id="logo" src="img/logo-site.png" alt="samplaces">
         <nav>
             <ul>
-                <a href="#"><li>top</li></a>
+                <a href="top.php"><li>top</li></a>
                 <a href="exibir.php?recente=true"><li>recentes</li></a>
                 <a href="login.php"><li id="logout">junte-se a nós! faça login</li></a>
             </ul>
@@ -49,7 +49,7 @@ if(isset($_GET['delete'])){
                 <p>logout efetuado com sucesso</p>
             <?php } ?>
             <a href="login.php"><button class="botao-grande">fazer login</button></a>
-            <a href="#"><button class="botao-grande">ir para a home</button></a>
+            <a href="index.php"><button class="botao-grande">ir para a home</button></a>
         </div> 
     </main>
 

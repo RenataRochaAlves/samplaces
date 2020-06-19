@@ -56,7 +56,7 @@ if($_POST){
         <img id="logo" src="img/logo-site.png" alt="samplaces">
         <nav>
             <ul>
-                <a href="#"><li>top</li></a>
+                <a href="top.php"><li>top</li></a>
                 <a href="exibir.php?recente=true"><li>recentes</li></a>
                 <a href="cadastro-user.php"><li id="logout">não possui uma conta? cadastre-se</li></a>
             </ul>

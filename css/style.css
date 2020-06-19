@@ -405,7 +405,7 @@ footer {
     align-self: center;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 footer img {
@@ -586,6 +586,7 @@ footer nav ul li {
 .tipo a img {
     width: 100%;
     border-radius: 0px;
+    margin-bottom: 0px;
 }
 
 .tipo * {
@@ -594,6 +595,7 @@ footer nav ul li {
 
 .tipo h6 {
     font-size: 0.9rem;
+    margin-bottom: 0px;
 }
 
 .user-post a{
@@ -723,3 +725,72 @@ footer nav ul li {
 .bloco-top .user-post a h5{
     font-size: 0.9rem;
 }
+
+/* aqui começa o index */
+
+.index-header {
+    height: 100vh;
+    background-image: url(../img/home.png);
+    background-position: top;
+    background-size: cover;
+    margin-bottom: 70px;
+}
+
+.index-header nav {
+    color: #1da8d4;
+}
+
+.index-header nav h1 {
+    font-size: 3.2rem;
+    font-family: tommybold;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.index-header nav h4 {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.index-header nav a {
+    text-decoration: none;
+}
+
+.index-header nav a p {
+    color: #e8a510;
+    text-align: center;
+}
+
+.home{
+    align-items: center;
+}
+
+.home img {
+    width: 100%;
+}
+
+.home h3 {
+    font-size: 3rem;
+}
+
+.home .bloco-top {
+    margin-bottom: 70px;
+}
+
+.cidade, .cidade h3, .cidade a {
+    color: #a6cda0;
+}
+
+.mundo h3, .mundo p {
+    color: #e8a510;
+    text-align: right;
+}
+
+.encontre h3, .encontre p {
+    color: #eb4100;
+}
+
+#b-home {
+    width: 40%;
+}
+
