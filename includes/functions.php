@@ -324,7 +324,7 @@ function exibirLugar($idLugar){
                             JOIN
                                 tipo_favorito as t
                             ON f.users_id = u.id AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
-                            WHERE f.lugar_id = :lugar;");
+                            WHERE f.lugar_id = :lugar");
     $query->execute(['lugar'=>$idLugar]);
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -498,6 +498,20 @@ function topLugaresTipo($idTipo){
 
     return $result;
 }
+
+// função que exibe um post de cada um do top 3
+function exibirTopPosts ($arrayTop) {
+    for($i=0; $i < 3; $i++){
+        $lugar = exibirLugar($arrayTop[$i]['id']);
+
+        $lugar = end($lugar);
+
+        $top[] = $lugar;
+    }
+
+    return $top;
+}
+
 
 
 ?>

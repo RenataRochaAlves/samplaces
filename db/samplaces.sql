@@ -375,8 +375,30 @@ ON u.id = f.users_id AND f.lugar_id = l.id AND f.tipo_favorito_id = t.id
 ORDER BY f.id DESC;
 
 
-SELECT
+SELECT id, nome FROM lugar WHERE nome LIKE "%av%";
 
+SELECT user FROM users WHERE user LIKE "%anin%" OR nome LIKE "%ren%";
+
+SELECT * FROM users;
+
+SELECT
+	count(f.lugar_id) as vezes,
+    l.nome as lugar,
+    l.id,
+    t.nome as tipo
+FROM 
+	favorito as f
+INNER JOIN 
+	lugar as l
+JOIN
+	tipo_favorito as t
+ON f.lugar_id = l.id AND f.tipo_favorito_id = t.id
+WHERE t.id = 4
+GROUP BY l.nome
+ORDER BY vezes DESC
+LIMIT 5;  
+
+SELECT * from users;
 
 
 

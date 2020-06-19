@@ -147,8 +147,14 @@ main {
     width: calc(100% / 2 - 20px);
 }
 
+.imagem-grande {
+    margin-right: 20px;
+    min-width: 310px;
+}
+
 .imagem-grande img {
     width: 100%;
+    
     /* height: auto; */
     border-radius: 20px;
 }
@@ -298,6 +304,7 @@ main {
     padding: 35px;
     border-radius: 20px;
     width: 40%;
+    max-width: 215px;
     height: 680px;
 
 }
@@ -556,6 +563,7 @@ footer nav ul li {
 
 .posts div {
     width: calc(100%/4 - 30px);
+    min-width: 210px;
     height: auto;
 }
 
@@ -694,4 +702,24 @@ footer nav ul li {
 
 .topo ol a li {
     color: #6e6e6e;
+}
+
+.bloco-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bloco-top .lista{
+    width: 40%;
+    margin-right: 50px;
+}
+
+.bloco-top .fav-outros .posts{
+    width: 60%;
+}
+
+.bloco-top .user-post a h5{
+    font-size: 0.9rem;
 }

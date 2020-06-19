@@ -39,6 +39,7 @@ $amigos = topLugaresTipo(2);
 $date = topLugaresTipo(3);
 $domingo = topLugaresTipo(4);
 
+$posts = exibirTopPosts($top);
 
 ?>
 
@@ -79,28 +80,54 @@ $domingo = topLugaresTipo(4);
 
     <main>
         <div class="conteudo exibir top">
+            <div class="bloco-top">
+                <div class="lista">
+                    <h3 id="topo">top do topo</h3>
+                    <article class="favorito topo">
+                            <ol>
+                                <?php foreach($top as $value): ?>
+                                    <a href="exibir.php?lugar=<?= $value['id'] ?>">
+                                        <li><?= $value['lugar'] ?></li>
+                                    </a>
+                                <?php endforeach ?>
+                            </ol>
+                    </article>
 
-            <h3 id="topo">top do topo</h3>
-            <article class="favorito topo">
-                    <ol>
-                        <?php foreach($top as $value): ?>
-                            <a href="exibir.php?lugar=<?= $value['id'] ?>">
-                                <li><?= $value['lugar'] ?></li>
-                            </a>
-                        <?php endforeach ?>
-                    </ol>
-            </article>
+                    <h3>lugares favoritos ever</h3>
+                    <article class="favorito">
+                            <ol>
+                                <?php foreach($favorito as $value): ?>
+                                    <a href="exibir.php?lugar=<?= $value['id'] ?>&tipo=1">
+                                        <li><?= $value['lugar'] ?></li>
+                                    </a>
+                                <?php endforeach ?>
+                            </ol>
+                    </article>
+                </div>
 
-            <h3>lugares favoritos ever</h3>
-            <article class="favorito">
-                    <ol>
-                        <?php foreach($favorito as $value): ?>
-                            <a href="exibir.php?lugar=<?= $value['id'] ?>&tipo=1">
-                                <li><?= $value['lugar'] ?></li>
-                            </a>
-                        <?php endforeach ?>
-                    </ol>
-            </article>
+                <div class="fav-outros posts">
+                <?php foreach($posts as $post): ?>
+                <div class="post">
+                    <a href="favorito.php?user=<?= $post['user'] ?>&fav=<?= $post['tipo'] ?>">
+                        <img src="<?= $post['foto'] ?>" alt="<?= $post['nome'] ?>, por @<?= $post['user'] ?>">
+                    </a>
+                    <div class="tipo">
+                        <h6><?= $post['nome'] ?></h6>
+                        <a href="exibir.php?lugar=<?= $post['lugar_id'] ?>&tipo=<?= $post['id_tipo'] ?>">
+                            <img src="img/<?= $post['tipo'] ?>.png" alt="<?= $post['tipo'] ?>">
+                        </a>
+                    </div>
+                    <div class="user-post">
+                        <a href="perfil.php?user=<?= $post['user'] ?>">
+                            <img  src="<?= $post['foto_user'] ?>" alt="<?= $post['user'] ?>">
+                            <h5>@<?= $post['user'] ?></h5>
+                        </a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+            
 
             <div class="fav-outros">
                 <div class="fav-amigos">
