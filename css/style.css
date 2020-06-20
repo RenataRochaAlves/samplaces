@@ -128,7 +128,6 @@ main {
 .conteudo {
     display: flex;
     flex-direction: column;
-    padding-right: 70px;
 }
 
 /* aqui começa o favorito principal */
@@ -145,6 +144,10 @@ main {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 100px;
+}
+
+.perfil {
+    padding-right: 70px;
 }
 
 .imagem-grande, .info {
@@ -250,11 +253,11 @@ main {
     justify-content: space-between;
 }
 
-.fav-outros div {
+.fav-perfil div {
     width: calc(100% / 3 - 5%);
 }
 
-.fav-outros div h5 {
+.fav-perfil div h5 {
     font-size: 1.1rem;
     margin-bottom: 15px;
 }
@@ -358,6 +361,10 @@ main {
     list-style-type: none;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.user-icon {
+    display: none;
 }
 
 .usuario a {
@@ -578,18 +585,19 @@ footer nav ul li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .user-post {
     margin-bottom: 30px;
 }
 
-.tipo a {
+/* .tipo a {
     width: 12%;
-}
+} */
 
 .tipo a img {
-    width: 100%;
+    width: 25px;
     border-radius: 0px;
     margin-bottom: 0px;
 }
@@ -620,6 +628,7 @@ footer nav ul li {
     width: 30px;
     height: 30px;
     border-radius: 100px;
+    margin-bottom: 0px;
 }
 
 .amigos {
@@ -885,18 +894,16 @@ footer nav ul li {
         margin-bottom: 20px;
     }
 
-    .fav-outros {
+    .fav-perfil{
         flex-direction: column;
     }
     
-    .fav-outros div {
+    .fav-perfil div {
         width: 100%;
         margin-bottom: 30px;
     }
     
-    .conteudo {
-        padding-right: 40px;
-    }
+    
 }
 
 @media (max-width:769px){
@@ -1027,6 +1034,20 @@ footer nav ul li {
     .fav-user ul a:nth-child(4) {
         margin-bottom: 60px;
     }
+
+    .perfil {
+        padding-right: 30px;
+    }
+    
+    .busca input {
+        font-size: 0.8rem;
+        padding: 6px;
+        padding-left: 15px;
+    }
+
+    .fav-outros div h6 {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1049,6 +1070,8 @@ footer nav ul li {
     #logo {
         width: 100px;
     }
+
+    
 }
 
 @media (max-width: 480px) {
@@ -1130,4 +1153,81 @@ footer nav ul li {
     .bloco-top .lista{
         width: 80%;
     }
+
+    .usuario {
+        padding: 20px;
+    }
+    
+    .usuario img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .usuario nav ul li {
+        display: none;
+    }
+
+    .usuario .menu-user ul li {
+        display: block;
+    }
+
+    .fav-user ul a:nth-child(4) {
+        margin-bottom: 30px;
+    }
+    
+    .usuario nav ul .user-icon {
+        display: block;
+    }
+
+    .user-icon img {
+        width: 25px;
+        height: 25px;
+        border-radius: 0px;
+    }
+
+    .fav-outros div h6 {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+
+    .fav-outros button {
+        font-size: 0.8rem;
+    }
+
+    .info p {
+        font-size: 0.8rem;
+    }
+
+    .conteudo h3 {
+        font-size: 1.3rem;
+    }
+
+    .info h4 {
+        font-size: 1.1rem;
+    }
+
+    .icones img {
+        width: 25px;
+    }
+
+    .icones h6 {
+        font-size: 0.7rem;
+    }
+
+    .imagem-grande {
+        min-width: 180px;
+    }
+
+    .perfil {
+        padding-right: 15px;
+    }
+
+    .posts div {
+        width: 100%;
+    }
+
+    .tipo a img {
+        width: 20px;
+    }
+
 }
