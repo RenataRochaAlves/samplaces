@@ -4,6 +4,11 @@ include("includes/functions.php");
 
 session_start();
 
+if(isset($_SESSION['user']) == false || isset($_SESSION['user']) && $_SESSION['user'] != $_GET['user']){
+    header('location: erro.php?session=true');
+}
+
+
 if($_GET['user']){
     $user = $_GET['user'];
 

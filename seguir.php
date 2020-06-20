@@ -81,7 +81,7 @@ if(isset($_POST['busca'])){
         </nav>
     </header>
 
-    <main>
+    <main class="main-logout">
         <div class="conteudo seguir">
             <?php if(isset($_SESSION['user']) && isset($_GET['action']) == false){ ?>
                 <div class="imagens">

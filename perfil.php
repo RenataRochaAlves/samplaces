@@ -296,9 +296,8 @@ if(isset($_POST['busca'])){
             <?php if(isset($_SESSION['user']) && $_SESSION['user'] == $perfil['user']){ ?>
                 <nav class="menu-user">
                     <ul>
-                        <a href="#"><li>salvos</li></a>
                         <a href="editar-user.php?user=<?= $perfil['user'] ?>"><li>configurações</li></a>
-                        <a href="#"><li>sair</li></a>
+                        <a href="logout.php"><li>sair</li></a>
                     </ul>
                 </nav>
             <?php } else { 

@@ -513,5 +513,4 @@ function exibirTopPosts ($arrayTop) {
 }
 
 
-
 ?>

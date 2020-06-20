@@ -178,6 +178,11 @@ input[type=checkbox]{
         width: 50%;
         margin-bottom: 100px;
     }
+
+    .botao-edit {
+        width: 100%;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width:480px) {

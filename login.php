@@ -58,7 +58,7 @@ if($_POST){
             <ul>
                 <a href="top.php"><li>top</li></a>
                 <a href="exibir.php?recente=true"><li>recentes</li></a>
-                <a href="cadastro-user.php"><li id="logout">não possui uma conta? cadastre-se</li></a>
+                <a href="cadastro-user.php"><li id="logout">ainda não tenho uma conta</li></a>
             </ul>
         </nav>
     </header>

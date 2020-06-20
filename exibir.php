@@ -30,6 +30,10 @@ if(isset($_SESSION['id']) && isset($_SESSION['user'])){
         $amigos = exibirSeguindo($idUser);
 
         $nome = "Amigos";
+
+        if(isset($amigos[0]['user']) == false){
+            header('location: erro.php?amigos=true');
+        }
     }
 }
 

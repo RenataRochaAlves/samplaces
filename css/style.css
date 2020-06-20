@@ -28,6 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 }
 
 /* aqui começa o header */
@@ -119,6 +120,7 @@ main img {
 main {
     display: flex;
     width: 100%;
+    min-height: 70vh;
     padding-left: 10%;
     padding-right: 10%;
     flex-direction: row;
@@ -492,6 +494,8 @@ footer nav ul li {
 /* aqui começa o logout */
 .main-logout {
     height: 53vh;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -553,6 +557,7 @@ footer nav ul li {
     color: #a0a0a0;
     font-family: tommyregular;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .seguir a{
@@ -924,6 +929,14 @@ footer nav ul li {
         font-size: 1.4rem;
         margin-bottom: 20px;
     }
+
+    .form-fav {
+        flex-direction: column;
+    }
+
+    .form-fav div {
+        width: 100%;
+    }
     
 }
 
@@ -1101,6 +1114,10 @@ footer nav ul li {
         font-size: 1rem;
         margin-bottom: 10px;
         padding-left: 10px;
+    }
+
+    .form-fav textarea {
+        font-size: 0.8rem;
     }
 }
 
@@ -1316,6 +1333,10 @@ footer nav ul li {
         justify-content: space-between;
         align-items: baseline;
         margin-bottom: 0px;
+    }
+
+    .main-logout {
+        height: 70vh;
     }
 
 }
