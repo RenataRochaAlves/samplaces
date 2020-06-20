@@ -100,6 +100,12 @@ $posts = exibirTopPosts($top);
 
 
             <div class="bloco-top mundo">
+                
+                <div class="lista">
+                    <h3>compartilhe com o mundo</h3>
+                    <p>crie uma conta e compartilhe seus lugares favoritos nos contando uma história curtinha sobre ele</p>
+                </div>
+
                 <div class="fav-outros posts">
                     <img src="img/exemplo2.png" alt="lugares favoritos">
                 </div>

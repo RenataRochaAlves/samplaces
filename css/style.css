@@ -409,13 +409,12 @@ footer {
 }
 
 footer img {
-    height: 30px;
+    height: 25px;
 }
 
 footer nav {
     width: 30%;
     margin-left: 100px;
-    margin-right: 100px;
 }
 
 footer nav ul {
@@ -423,7 +422,6 @@ footer nav ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 }
 
 footer nav ul a {
@@ -574,7 +572,6 @@ footer nav ul li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 }
 
 .user-post {
@@ -793,6 +790,251 @@ footer nav ul li {
 }
 
 #b-home {
-    width: 40%;
+    white-space: nowrap;
 }
 
+#b-home button {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.home .mundo .lista:nth-child(1) {
+    display: none;
+}
+
+.home .mundo .lista:last-child {
+    margin-right: 0px;
+    margin-left: 50px;
+}
+
+
+
+/* aqui começam os media querys */
+
+@media (max-width: 1200px){
+    .home .posts div {
+        width: calc(100%/3 - 15px);
+        min-width: 100px;
+    }
+
+    .home .posts .tipo {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1085px){
+    .index-header {
+        height: 500px;
+    }
+
+    .index-header nav {
+        width: 35%;
+    }
+
+    .home .lista h3 {
+        font-size: 2.6rem;
+    }
+}
+
+@media (max-width: 935px){
+    .index-header nav h1 {
+        font-size: 2.8rem;
+    }
+
+    .index-header {
+        height: 450px;
+    }
+
+    .index-header nav {
+        width: 38%;
+    }
+
+    .cidade .post .tipo h6 {
+        font-size: 1rem;
+    }
+    
+    footer nav {
+        width: 40%;
+        margin-left: 50px;
+    }
+}
+
+@media (max-width:769px){
+    .index-header nav h1 {
+        font-size: 2rem;
+    }
+
+    .index-header nav h4 {
+        font-size: 0.8rem;
+    }
+
+    .index-header {
+        height: 400px;
+    }
+
+    .index-header .botao-grande, .index-header nav a p {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+
+    .bloco-top {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .bloco-top .lista{
+        width: 70%;
+        margin-right: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .bloco-top .lista h3 {
+        width: 40%;
+        font-size: 1.8rem;
+        margin-bottom: 0px;
+    }
+
+    .bloco-top .lista p {
+        width: 50%;
+        font-size: 0.9rem;
+    }
+
+    #b-home button {
+        font-size: 0.9rem;
+    }
+    
+    .bloco-top .fav-outros .posts{
+        width: 100%;
+    }
+
+    .home .mundo .lista:nth-child(1) {
+        display: flex;
+    }
+
+    .mundo h3, .mundo p {
+        text-align: left;
+    }
+    
+    .home .mundo .lista:last-child {
+        display: none;
+    }
+
+    .cidade .post .tipo h6 {
+        font-size: 0.9rem;
+    }
+    
+    main {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    footer img {
+        height: 20px;
+    }
+
+    footer {
+        height: 80px;
+        width: 80%;
+    }
+    
+    footer nav {
+        width: 40%;
+        margin-left: 50px;
+    }
+
+    footer nav ul li {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .index-header {
+        height: 300px;
+    }
+
+    .index-header nav h1 {
+        font-size: 1.8rem;
+    }
+
+    .index-header nav h4, .index-header .botao-grande, .index-header nav a p {
+        font-size: 0.7rem;
+    }
+
+    .index-header nav {
+        width: 40%;
+    }
+
+    #logo {
+        width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .index-header {
+        height: 280px;
+        padding-right: 20px;
+    }
+
+    .index-header nav h1 {
+        font-size: 1.5rem;
+    }
+
+    .index-header nav h4, .index-header .botao-grande, .index-header nav a p {
+        font-size: 0.6rem;
+    }
+
+    .index-header .botao-grande {
+        padding: 3px;
+    }
+
+    .bloco-top .lista h3 {
+        font-size: 1.3rem;
+    }
+
+    .bloco-top .lista p, #b-home button {
+        font-size: 0.8rem;
+    }
+
+    .bloco-top .user-post a h5{
+        font-size: 0.6rem;
+    }
+
+    .cidade .post .tipo h6 {
+        font-size: 0.7rem;
+    }
+    
+    .user-post a img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .home .posts div {
+        min-width: 90px;
+    }
+
+    footer img {
+        height: 15px;
+    }
+
+    footer {
+        height: 60px;
+        margin-top: 50px;
+    }
+    
+    footer nav {
+        margin-left: 20px;
+    }
+
+    footer nav ul li {
+        font-size: 0.7rem;
+    }
+
+    .bloco-top .lista{
+        width: 80%;
+    }
+}
