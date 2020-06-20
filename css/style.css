@@ -823,6 +823,10 @@ footer nav ul li {
 }
 
 @media (max-width: 1085px){
+    header nav {
+        width: 40%;
+    }
+
     .index-header {
         height: 500px;
     }
@@ -860,6 +864,18 @@ footer nav ul li {
 }
 
 @media (max-width:769px){
+    header {
+        padding-right: 20px;
+    }
+    
+    header nav {
+        width: 60%;
+    }
+
+    header nav ul li {
+        font-size: 0.9rem;
+    }
+
     .index-header nav h1 {
         font-size: 2rem;
     }
@@ -975,6 +991,22 @@ footer nav ul li {
 }
 
 @media (max-width: 480px) {
+    header #logo {
+        width: 110px;
+    }
+
+    header {
+        padding-right: 15px;
+    }
+    
+    header nav {
+        width: 70%;
+    }
+
+    header nav ul li {
+        font-size: 0.8rem;
+    }
+
     .index-header {
         height: 280px;
         padding-right: 20px;
