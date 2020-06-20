@@ -85,6 +85,10 @@ header nav ul li {
 
 .busca form {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .busca input {
@@ -154,8 +158,6 @@ main {
 
 .imagem-grande img {
     width: 100%;
-    
-    /* height: auto; */
     border-radius: 20px;
 }
 
@@ -306,7 +308,8 @@ main {
     width: 40%;
     max-width: 215px;
     height: 680px;
-
+    position: sticky;
+    top: 0;
 }
 
 .usuario a {
@@ -359,6 +362,9 @@ main {
 
 .usuario a {
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .fav-user ul a:nth-child(1) {
@@ -838,6 +844,10 @@ footer nav ul li {
     .home .lista h3 {
         font-size: 2.6rem;
     }
+
+    .info p, .icones {
+        margin-bottom: 30px;
+    }
 }
 
 @media (max-width: 935px){
@@ -860,6 +870,32 @@ footer nav ul li {
     footer nav {
         width: 40%;
         margin-left: 50px;
+    }
+
+    .favorito {
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+    
+    .imagem-grande, .info {
+        width: 100%;
+    }
+    
+    .imagem-grande {
+        margin-bottom: 20px;
+    }
+
+    .fav-outros {
+        flex-direction: column;
+    }
+    
+    .fav-outros div {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .conteudo {
+        padding-right: 40px;
     }
 }
 
@@ -965,6 +1001,31 @@ footer nav ul li {
 
     footer nav ul li {
         font-size: 0.9rem;
+    }
+
+    .imagem-grande {
+        min-width: 230px;
+    }
+
+    .usuario {
+        padding: 25px;
+    }
+    
+    .usuario img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .usuario h5 {
+        font-size: 1rem;
+    }
+    
+    .usuario h6, .usuario p, .usuario nav ul li, .botao-grande {
+        font-size: 0.8rem;
+    }
+
+    .fav-user ul a:nth-child(4) {
+        margin-bottom: 60px;
     }
 }
 
