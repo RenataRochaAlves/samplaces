@@ -79,11 +79,12 @@ $posts = exibirTopPosts($top);
     </header>
 
     <main>
-        <div class="conteudo exibir top">
+        <div class="conteudo exibir top home">
             <div class="bloco-top">
-                <div class="lista">
-                    <h3 id="topo">top do topo</h3>
+                <div class="lista top-lista">
+                    
                     <article class="favorito topo">
+                        <h4 id="topo">top do topo</h3>
                             <ol>
                                 <?php foreach($top as $value): ?>
                                     <a href="exibir.php?lugar=<?= $value['id'] ?>">
@@ -93,8 +94,9 @@ $posts = exibirTopPosts($top);
                             </ol>
                     </article>
 
-                    <h3>lugares favoritos ever</h3>
+                    
                     <article class="favorito">
+                        <h4>lugares favoritos ever</h3>
                             <ol>
                                 <?php foreach($favorito as $value): ?>
                                     <a href="exibir.php?lugar=<?= $value['id'] ?>&tipo=1">
@@ -129,7 +131,7 @@ $posts = exibirTopPosts($top);
         </div>
             
 
-            <div class="fav-outros">
+            <div class="fav-outros top-fav">
                 <div class="fav-amigos">
                     <h5>encontrar os amigos</h5>
                     <ol>

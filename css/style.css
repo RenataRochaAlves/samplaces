@@ -671,6 +671,18 @@ footer nav ul li {
 }
 
 /* aqui começa o top */
+.home .bloco-top article {
+    flex-direction: column;
+}
+
+.bloco-top .lista h4 {
+    font-size: 1.6rem;
+    color: #1da8d4;
+    font-family: tommybold;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
 #topo {
     color: #a0a0a0;
 }
@@ -681,6 +693,7 @@ footer nav ul li {
 
 .top .fav-outros h5 {
     font-size: 1.3rem;
+    margin-bottom: 15px;
 }
 
 .top .fav-outros a li {
@@ -903,6 +916,14 @@ footer nav ul li {
         margin-bottom: 30px;
     }
     
+    .top article a li {
+        font-size: 1.1rem;
+    }
+
+    .bloco-top .lista h4 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
     
 }
 
@@ -1048,6 +1069,39 @@ footer nav ul li {
     .fav-outros div h6 {
         font-size: 1rem;
     }
+
+    .amigo {
+        padding: 15px;
+    }
+    
+    .amigo img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .amigo h5 {
+        font-size: 0.9rem;
+    }
+    
+    .amigo p {
+        font-size: 0.8rem;
+    }
+
+    .conteudo h3 {
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+    }
+
+    .top .fav-outros h5 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .top .fav-outros a li {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1075,6 +1129,15 @@ footer nav ul li {
 }
 
 @media (max-width: 480px) {
+    .top-fav {
+        flex-direction: column;
+        margin-left: 50px;
+    }
+
+    .top-fav div {
+        margin-bottom: 30px;
+    }
+
     header #logo {
         width: 110px;
     }
@@ -1228,6 +1291,31 @@ footer nav ul li {
 
     .tipo a img {
         width: 20px;
+    }
+
+    .amigo {
+        padding: 10px;
+        padding-top: 0;
+    }
+    
+    .amigo img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .amigo h5 {
+        font-size: 0.8rem;
+    }
+    
+    .amigo p {
+        font-size: 0.7rem;
+    }
+
+    .bloco-top .top-lista {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0px;
     }
 
 }
