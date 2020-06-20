@@ -168,6 +168,16 @@ input[type=checkbox]{
         width: 150px;
         height: 150px;
     }
+
+    .nova-conta p {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    
+    .login {
+        width: 50%;
+        margin-bottom: 100px;
+    }
 }
 
 @media (max-width:480px) {
@@ -197,5 +207,10 @@ input[type=checkbox]{
 
     input {
         font-size: 1rem;
+    }
+
+    .login {
+        width: 70%;
+        margin-bottom: 150px;
     }
 }
